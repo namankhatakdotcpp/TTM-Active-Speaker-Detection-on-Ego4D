@@ -1,0 +1,48 @@
+{
+  "threshold": 0.5,
+  "accuracy": 0.956964006259781,
+  "f1": 0.12698412698412698,
+  "precision": 0.07692307692307693,
+  "recall": 0.36363636363636365,
+  "confusion_matrix": [
+    [
+      1219,
+      48
+    ],
+    [
+      7,
+      4
+    ]
+  ],
+  "class_counts": {
+    "0": 1267,
+    "1": 11
+  },
+  "pred_pos_rate": 0.0406885758998435,
+  "auc_roc": 0.911028198321016,
+  "report": "              precision    recall  f1-score   support\n\n     not_ttm     0.9943    0.9621    0.9779      1267\n         ttm     0.0769    0.3636    0.1270        11\n\n    accuracy                         0.9570      1278\n   macro avg     0.5356    0.6629    0.5525      1278\nweighted avg     0.9864    0.9570    0.9706      1278\n",
+  "metrics_best_threshold": {
+    "threshold": 0.5800000000000003,
+    "accuracy": 0.9812206572769953,
+    "f1": 0.2,
+    "precision": 0.15789473684210525,
+    "recall": 0.2727272727272727,
+    "confusion_matrix": [
+      [
+        1251,
+        16
+      ],
+      [
+        8,
+        3
+      ]
+    ],
+    "class_counts": {
+      "0": 1267,
+      "1": 11
+    },
+    "pred_pos_rate": 0.01486697965571205,
+    "auc_roc": 0.911028198321016,
+    "report": "              precision    recall  f1-score   support\n\n     not_ttm     0.9936    0.9874    0.9905      1267\n         ttm     0.1579    0.2727    0.2000        11\n\n    accuracy                         0.9812      1278\n   macro avg     0.5758    0.6300    0.5952      1278\nweighted avg     0.9865    0.9812    0.9837      1278\n"
+  }
+}

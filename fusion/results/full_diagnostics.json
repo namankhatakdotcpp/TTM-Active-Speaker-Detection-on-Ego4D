@@ -1,0 +1,28 @@
+{
+  "num_tracks": 1278,
+  "num_windows": 40161,
+  "avg_windows_per_track": 31.42488262910798,
+  "window_proba_stats": {
+    "mean": 0.2464408860911277,
+    "std": 0.13157315342119477,
+    "min": 0.03951414301991463,
+    "max": 0.736404603403626,
+    "median": 0.22662536489466828
+  },
+  "predicted_label_dist": {
+    "0": 1226,
+    "1": 52
+  },
+  "true_label_dist": {
+    "0": 1267,
+    "1": 11
+  },
+  "dataset_stats": {
+    "num_tracks_in_dataset": 1321,
+    "num_windows_in_dataset": 40161,
+    "label_counts_in_dataset": {
+      "1": 1902,
+      "0": 38259
+    }
+  }
+}

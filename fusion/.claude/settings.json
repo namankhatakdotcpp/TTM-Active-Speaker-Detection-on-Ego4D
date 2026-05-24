@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python create_presentation.py)",
+      "Bash(pdflatex -interaction=nonstopmode presenter_guide.tex)",
+      "Read(//usr/**)",
+      "Bash(apt list *)",
+      "Bash(python3 -c \"import reportlab; print\\('reportlab ok'\\)\")",
+      "Bash(python3 -c \"import weasyprint; print\\('weasyprint ok'\\)\")",
+      "Bash(python3 -c \"from fpdf import FPDF; print\\('fpdf ok'\\)\")",
+      "Bash(python3 -c \"import reportlab\")",
+      "Bash(python3 -c \"import fpdf\")",
+      "Bash(python3 -c \"import weasyprint\")",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c \"import reportlab; print\\('reportlab', reportlab.Version\\)\")",
+      "Bash(python3 generate_presenter_pdf.py)",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}

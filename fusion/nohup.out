@@ -1,0 +1,43 @@
+Traceback (most recent call last):
+  File "/usershome/cs671_user13/group_42/fusion/train_fusion.py", line 35, in <module>
+    import torch
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/__init__.py", line 2253, in <module>
+    from torch import masked as masked
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/masked/__init__.py", line 1, in <module>
+    from torch.masked._ops import (
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/masked/_ops.py", line 10, in <module>
+    from torch.masked.maskedtensor.core import is_masked_tensor, MaskedTensor
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/masked/maskedtensor/__init__.py", line 4, in <module>
+    from .binary import _apply_native_binary, _is_native_binary
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/masked/maskedtensor/binary.py", line 179, in <module>
+    NATIVE_BINARY_MAP = {
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/masked/maskedtensor/binary.py", line 180, in <dictcomp>
+    getattr(torch.ops.aten, name): _torch_binary(name) for name in BINARY_NAMES
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/_ops.py", line 1243, in __getattr__
+    opoverloadpacket = OpOverloadPacket(
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/_ops.py", line 1025, in __init__
+    _has_script_object_arg(schema) for schema in self._schemas.values()
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/_ops.py", line 1049, in _schemas
+    return {
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/_ops.py", line 1050, in <dictcomp>
+    overload_name: torch._C._get_schema(self._qualified_op_name, overload_name)
+KeyboardInterrupt
+Device: cuda
+
+Loading dataset from: /path/to/balanced_clips_70k.csv
+Traceback (most recent call last):
+  File "/usershome/cs671_user13/group_42/fusion/train_fusion.py", line 604, in <module>
+    main()
+  File "/usershome/cs671_user13/group_42/fusion/train_fusion.py", line 307, in main
+    df = pd.read_csv(args.clips_csv)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/path/to/balanced_clips_70k.csv'

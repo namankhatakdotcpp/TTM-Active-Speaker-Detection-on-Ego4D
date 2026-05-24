@@ -1,0 +1,9 @@
+Split: val
+              precision    recall  f1-score   support
+
+     not_ttm     0.9976    0.9841    0.9908      6658
+         ttm     0.6928    0.9373    0.7967       255
+
+    accuracy                         0.9824      6913
+   macro avg     0.8452    0.9607    0.8937      6913
+weighted avg     0.9863    0.9824    0.9836      6913

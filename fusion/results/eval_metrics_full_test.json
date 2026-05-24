@@ -1,0 +1,27 @@
+{
+  "checkpoint": "checkpoints/best_model.pth",
+  "clips_csv": "/usershome/cs671_user13/ego4d_data/v2/full_scale/pipeline/data/clips_index.csv",
+  "exclude_train_csv": "/usershome/cs671_user13/ego4d_data/v2/full_scale/pipeline/data/balanced_clips_70k.csv",
+  "split": "all",
+  "t_seq": 16,
+  "stride": 1,
+  "auc_roc": 0.8633444030554392,
+  "f1": 0.7785857960699366,
+  "precision": 0.769889840881273,
+  "recall": 0.7874804381846635,
+  "confusion_matrix": [
+    [
+      4886,
+      1504
+    ],
+    [
+      1358,
+      5032
+    ]
+  ],
+  "class_counts": {
+    "0": 6390,
+    "1": 6390
+  },
+  "pred_pos_rate": 0.5114241001564945
+}

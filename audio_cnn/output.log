@@ -1,0 +1,101 @@
+nohup: ignoring input
+Device: cuda
+
+Loading balanced audio dataset
+  Audio index  : /usershome/cs671_user13/group_42/audio_cnn/data/balanced_audio_index.csv
+  Balanced CSV : /usershome/cs671_user13/group_42/audio_cnn/../../ego4d_data/v2/full_scale/pipeline/data/balanced_clips_50k.csv
+[AudioClipDataset] train: 50,000 clips loaded
+[BalancedAudioDataset] train: 50,000 → 50,000 clips (filtered to balanced 50,000 ids)
+[AudioClipDataset] val: 5,358 clips loaded
+[BalancedAudioDataset] val: 5,358 → 5,358 clips (filtered to balanced 5,358 ids)
+
+Loading ResNet-18 audio encoder (ImageNet pretrained)...
+Params — total: 11.2M  trainable: 11.2M
+
+Training: 20 epochs, batch=128
+
+Epoch [1/20]  lr=1.00e-04
+  [train] 100/390 | loss 0.7831 | acc 0.5695 | ETA 0.2min     [train] 200/390 | loss 0.7459 | acc 0.5858 | ETA 0.1min     [train] 300/390 | loss 0.7196 | acc 0.5976 | ETA 0.0min   
+
+  train loss=0.7024 acc=0.6068 | val loss=0.6026 acc=0.6678 | time=0.2min
+  >> Best model saved (val_acc=0.6678)
+Epoch [2/20]  lr=9.94e-05
+  [train] 100/390 | loss 0.6248 | acc 0.6602 | ETA 0.1min     [train] 200/390 | loss 0.6146 | acc 0.6654 | ETA 0.1min     [train] 300/390 | loss 0.6138 | acc 0.6637 | ETA 0.0min   
+
+  train loss=0.6097 acc=0.6669 | val loss=0.6127 acc=0.6626 | time=0.1min
+Epoch [3/20]  lr=9.76e-05
+  [train] 100/390 | loss 0.5805 | acc 0.6946 | ETA 0.1min     [train] 200/390 | loss 0.5780 | acc 0.6944 | ETA 0.1min     [train] 300/390 | loss 0.5768 | acc 0.6938 | ETA 0.0min   
+
+  train loss=0.5764 acc=0.6940 | val loss=0.6089 acc=0.6639 | time=0.1min
+Epoch [4/20]  lr=9.46e-05
+  [train] 100/390 | loss 0.5561 | acc 0.7118 | ETA 0.1min     [train] 200/390 | loss 0.5511 | acc 0.7122 | ETA 0.1min     [train] 300/390 | loss 0.5521 | acc 0.7108 | ETA 0.0min   
+
+  train loss=0.5511 acc=0.7122 | val loss=0.6343 acc=0.6457 | time=0.1min
+Epoch [5/20]  lr=9.05e-05
+  [train] 100/390 | loss 0.5312 | acc 0.7260 | ETA 0.1min     [train] 200/390 | loss 0.5305 | acc 0.7245 | ETA 0.1min     [train] 300/390 | loss 0.5313 | acc 0.7254 | ETA 0.0min   
+
+  train loss=0.5319 acc=0.7252 | val loss=0.6468 acc=0.6261 | time=0.1min
+Epoch [6/20]  lr=8.55e-05
+  [train] 100/390 | loss 0.4919 | acc 0.7623 | ETA 0.1min     [train] 200/390 | loss 0.4992 | acc 0.7535 | ETA 0.1min     [train] 300/390 | loss 0.5012 | acc 0.7497 | ETA 0.0min   
+
+  train loss=0.5050 acc=0.7470 | val loss=0.6412 acc=0.6403 | time=0.1min
+Epoch [7/20]  lr=7.96e-05
+  [train] 100/390 | loss 0.4684 | acc 0.7721 | ETA 0.1min     [train] 200/390 | loss 0.4776 | acc 0.7657 | ETA 0.1min     [train] 300/390 | loss 0.4774 | acc 0.7649 | ETA 0.0min   
+
+  train loss=0.4789 acc=0.7642 | val loss=0.6872 acc=0.6285 | time=0.1min
+Epoch [8/20]  lr=7.30e-05
+  [train] 100/390 | loss 0.4382 | acc 0.7905 | ETA 0.1min     [train] 200/390 | loss 0.4435 | acc 0.7884 | ETA 0.1min     [train] 300/390 | loss 0.4471 | acc 0.7865 | ETA 0.0min   
+
+  train loss=0.4491 acc=0.7849 | val loss=0.7235 acc=0.6220 | time=0.1min
+Epoch [9/20]  lr=6.58e-05
+  [train] 100/390 | loss 0.3986 | acc 0.8191 | ETA 0.1min     [train] 200/390 | loss 0.4073 | acc 0.8132 | ETA 0.1min     [train] 300/390 | loss 0.4084 | acc 0.8116 | ETA 0.0min   
+
+  train loss=0.4108 acc=0.8095 | val loss=0.7847 acc=0.6146 | time=0.1min
+Epoch [10/20]  lr=5.82e-05
+  [train] 100/390 | loss 0.3631 | acc 0.8373 | ETA 0.1min     [train] 200/390 | loss 0.3625 | acc 0.8383 | ETA 0.1min     [train] 300/390 | loss 0.3690 | acc 0.8344 | ETA 0.0min   
+
+  train loss=0.3707 acc=0.8321 | val loss=0.8405 acc=0.6263 | time=0.1min
+Epoch [11/20]  lr=5.05e-05
+  [train] 100/390 | loss 0.3166 | acc 0.8630 | ETA 0.1min     [train] 200/390 | loss 0.3195 | acc 0.8608 | ETA 0.1min     [train] 300/390 | loss 0.3228 | acc 0.8580 | ETA 0.0min   
+
+  train loss=0.3260 acc=0.8563 | val loss=0.9612 acc=0.6150 | time=0.1min
+Epoch [12/20]  lr=4.28e-05
+  [train] 100/390 | loss 0.2774 | acc 0.8813 | ETA 0.1min     [train] 200/390 | loss 0.2799 | acc 0.8805 | ETA 0.1min     [train] 300/390 | loss 0.2838 | acc 0.8776 | ETA 0.0min   
+
+  train loss=0.2848 acc=0.8769 | val loss=1.0761 acc=0.6050 | time=0.1min
+Epoch [13/20]  lr=3.52e-05
+  [train] 100/390 | loss 0.2505 | acc 0.8940 | ETA 0.1min     [train] 200/390 | loss 0.2486 | acc 0.8939 | ETA 0.1min     [train] 300/390 | loss 0.2509 | acc 0.8926 | ETA 0.0min   
+
+  train loss=0.2531 acc=0.8917 | val loss=1.0948 acc=0.6195 | time=0.1min
+Epoch [14/20]  lr=2.80e-05
+  [train] 100/390 | loss 0.2194 | acc 0.9067 | ETA 0.1min     [train] 200/390 | loss 0.2174 | acc 0.9095 | ETA 0.1min     [train] 300/390 | loss 0.2200 | acc 0.9087 | ETA 0.0min   
+
+  train loss=0.2196 acc=0.9085 | val loss=1.2476 acc=0.6154 | time=0.1min
+Epoch [15/20]  lr=2.14e-05
+  [train] 100/390 | loss 0.1951 | acc 0.9211 | ETA 0.1min     [train] 200/390 | loss 0.2032 | acc 0.9155 | ETA 0.1min     [train] 300/390 | loss 0.2017 | acc 0.9166 | ETA 0.0min   
+
+  train loss=0.2026 acc=0.9159 | val loss=1.2924 acc=0.6170 | time=0.1min
+Epoch [16/20]  lr=1.55e-05
+  [train] 100/390 | loss 0.1813 | acc 0.9260 | ETA 0.1min     [train] 200/390 | loss 0.1840 | acc 0.9256 | ETA 0.1min     [train] 300/390 | loss 0.1825 | acc 0.9254 | ETA 0.0min   
+
+  train loss=0.1815 acc=0.9258 | val loss=1.4341 acc=0.6137 | time=0.1min
+Epoch [17/20]  lr=1.05e-05
+  [train] 100/390 | loss 0.1718 | acc 0.9320 | ETA 0.1min     [train] 200/390 | loss 0.1692 | acc 0.9327 | ETA 0.1min     [train] 300/390 | loss 0.1681 | acc 0.9329 | ETA 0.0min   
+
+  train loss=0.1689 acc=0.9321 | val loss=1.4601 acc=0.6109 | time=0.1min
+Epoch [18/20]  lr=6.40e-06
+  [train] 100/390 | loss 0.1611 | acc 0.9365 | ETA 0.1min     [train] 200/390 | loss 0.1582 | acc 0.9376 | ETA 0.1min     [train] 300/390 | loss 0.1580 | acc 0.9379 | ETA 0.0min   
+
+  train loss=0.1582 acc=0.9382 | val loss=1.3764 acc=0.6223 | time=0.1min
+Epoch [19/20]  lr=3.42e-06
+  [train] 100/390 | loss 0.1513 | acc 0.9391 | ETA 0.1min     [train] 200/390 | loss 0.1496 | acc 0.9405 | ETA 0.1min     [train] 300/390 | loss 0.1486 | acc 0.9411 | ETA 0.0min   
+
+  train loss=0.1498 acc=0.9405 | val loss=1.4698 acc=0.6112 | time=0.1min
+Epoch [20/20]  lr=1.61e-06
+  [train] 100/390 | loss 0.1496 | acc 0.9426 | ETA 0.1min     [train] 200/390 | loss 0.1491 | acc 0.9411 | ETA 0.1min     [train] 300/390 | loss 0.1494 | acc 0.9410 | ETA 0.0min   
+
+  train loss=0.1504 acc=0.9404 | val loss=1.4620 acc=0.6161 | time=0.1min
+
+Done. Best val acc: 0.6678
+464.98user 78.96system 2:48.64elapsed 322%CPU (0avgtext+0avgdata 1317428maxresident)k
+921288inputs+437592outputs (3446709major+1820323minor)pagefaults 0swaps

@@ -1,0 +1,196 @@
+{
+  "best_val_ap": 0.8169524128731172,
+  "best_val_f1": 0.7245804540967423,
+  "best_val_acc": 0.7022387534379959,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.78919,
+      "train_acc": 0.56169,
+      "val_loss": 0.70951,
+      "val_acc": 0.5458,
+      "val_f1": 0.68786,
+      "val_ap": 0.64911,
+      "lr": 0.0003
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.65277,
+      "train_acc": 0.61601,
+      "val_loss": 0.66543,
+      "val_acc": 0.64439,
+      "val_f1": 0.63991,
+      "val_ap": 0.71258,
+      "lr": 0.0003
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.60739,
+      "train_acc": 0.66797,
+      "val_loss": 0.65302,
+      "val_acc": 0.6563,
+      "val_f1": 0.7062,
+      "val_ap": 0.74045,
+      "lr": 0.0003
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.59963,
+      "train_acc": 0.68234,
+      "val_loss": 0.66856,
+      "val_acc": 0.6572,
+      "val_f1": 0.70819,
+      "val_ap": 0.76628,
+      "lr": 0.0003
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.56634,
+      "train_acc": 0.70504,
+      "val_loss": 0.60145,
+      "val_acc": 0.68603,
+      "val_f1": 0.71456,
+      "val_ap": 0.79805,
+      "lr": 0.0003
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.54931,
+      "train_acc": 0.73961,
+      "val_loss": 0.60078,
+      "val_acc": 0.69427,
+      "val_f1": 0.71554,
+      "val_ap": 0.80247,
+      "lr": 0.0003
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.56593,
+      "train_acc": 0.72479,
+      "val_loss": 0.71142,
+      "val_acc": 0.67814,
+      "val_f1": 0.71495,
+      "val_ap": 0.77565,
+      "lr": 0.0003
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.52728,
+      "train_acc": 0.7441,
+      "val_loss": 0.59924,
+      "val_acc": 0.70224,
+      "val_f1": 0.72458,
+      "val_ap": 0.81695,
+      "lr": 0.0003
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.51071,
+      "train_acc": 0.76113,
+      "val_loss": 0.72826,
+      "val_acc": 0.67998,
+      "val_f1": 0.68099,
+      "val_ap": 0.8157,
+      "lr": 0.0003
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.53071,
+      "train_acc": 0.72951,
+      "val_loss": 0.63719,
+      "val_acc": 0.6845,
+      "val_f1": 0.73894,
+      "val_ap": 0.7933,
+      "lr": 0.0003
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.48966,
+      "train_acc": 0.78346,
+      "val_loss": 0.75116,
+      "val_acc": 0.69154,
+      "val_f1": 0.7042,
+      "val_ap": 0.7846,
+      "lr": 0.0003
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.50373,
+      "train_acc": 0.76695,
+      "val_loss": 0.80187,
+      "val_acc": 0.66267,
+      "val_f1": 0.72556,
+      "val_ap": 0.76864,
+      "lr": 0.00015
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.44933,
+      "train_acc": 0.80041,
+      "val_loss": 0.69514,
+      "val_acc": 0.67536,
+      "val_f1": 0.72711,
+      "val_ap": 0.79459,
+      "lr": 0.00015
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.42714,
+      "train_acc": 0.8069,
+      "val_loss": 0.76674,
+      "val_acc": 0.69255,
+      "val_f1": 0.69948,
+      "val_ap": 0.7949,
+      "lr": 0.00015
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.37324,
+      "train_acc": 0.87375,
+      "val_loss": 0.74756,
+      "val_acc": 0.6822,
+      "val_f1": 0.73498,
+      "val_ap": 0.77798,
+      "lr": 0.00015
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.39257,
+      "train_acc": 0.86888,
+      "val_loss": 0.77644,
+      "val_acc": 0.68287,
+      "val_f1": 0.72609,
+      "val_ap": 0.72615,
+      "lr": 7.5e-05
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.39477,
+      "train_acc": 0.85495,
+      "val_loss": 0.78211,
+      "val_acc": 0.68665,
+      "val_f1": 0.72264,
+      "val_ap": 0.76322,
+      "lr": 7.5e-05
+    }
+  ],
+  "config": {
+    "epochs": 50,
+    "clips_csv": "/usershome/cs671_user13/ego4d_data/v2/full_scale/pipeline/data/balanced_clips_70k.csv",
+    "batch_size": 256,
+    "lr": 0.0003,
+    "weight_decay": 0.0005,
+    "dropout": 0.5,
+    "num_workers": 4,
+    "t_seq": 16,
+    "stride": 4,
+    "val_stride": 16,
+    "fusion_type": "cross_attn",
+    "cross_attn_layers": 2,
+    "weighted_sampler": true,
+    "min_clips": 4,
+    "fixed_threshold": 0.5
+  },
+  "optimal_threshold": 0.2751,
+  "final_ap": 0.81695
+}

@@ -1,0 +1,442 @@
+{
+  "video_uid": "03e90bbc-7d6b-423c-84d9-b5be3eff11c5",
+  "checkpoint": "/usershome/cs671_user13/group_42/fusion/checkpoints/best_model.pth",
+  "people": [
+    {
+      "person_id": "1",
+      "num_clips": 1132,
+      "num_windows": 71,
+      "mean_ttm_probability": 0.2691024787474791,
+      "max_ttm_probability": 0.9956645369529724,
+      "predicted_ttm": true,
+      "window_scores": [
+        {
+          "start_clip_id": 581142,
+          "end_clip_id": 581157,
+          "num_clips": 16,
+          "ttm_probability": 0.00456150621175766
+        },
+        {
+          "start_clip_id": 581158,
+          "end_clip_id": 581173,
+          "num_clips": 16,
+          "ttm_probability": 0.22838272154331207
+        },
+        {
+          "start_clip_id": 581174,
+          "end_clip_id": 581189,
+          "num_clips": 16,
+          "ttm_probability": 0.6151668429374695
+        },
+        {
+          "start_clip_id": 581190,
+          "end_clip_id": 581205,
+          "num_clips": 16,
+          "ttm_probability": 0.014968774281442165
+        },
+        {
+          "start_clip_id": 581206,
+          "end_clip_id": 581221,
+          "num_clips": 16,
+          "ttm_probability": 0.0050827027298510075
+        },
+        {
+          "start_clip_id": 581222,
+          "end_clip_id": 581237,
+          "num_clips": 16,
+          "ttm_probability": 0.008118800818920135
+        },
+        {
+          "start_clip_id": 581238,
+          "end_clip_id": 581253,
+          "num_clips": 16,
+          "ttm_probability": 0.003839485812932253
+        },
+        {
+          "start_clip_id": 581254,
+          "end_clip_id": 581269,
+          "num_clips": 16,
+          "ttm_probability": 0.16543051600456238
+        },
+        {
+          "start_clip_id": 581270,
+          "end_clip_id": 581285,
+          "num_clips": 16,
+          "ttm_probability": 0.0030730387661606073
+        },
+        {
+          "start_clip_id": 581286,
+          "end_clip_id": 581301,
+          "num_clips": 16,
+          "ttm_probability": 0.33371666073799133
+        },
+        {
+          "start_clip_id": 581302,
+          "end_clip_id": 581317,
+          "num_clips": 16,
+          "ttm_probability": 0.04017092287540436
+        },
+        {
+          "start_clip_id": 581318,
+          "end_clip_id": 581333,
+          "num_clips": 16,
+          "ttm_probability": 0.004920058883726597
+        },
+        {
+          "start_clip_id": 581334,
+          "end_clip_id": 581349,
+          "num_clips": 16,
+          "ttm_probability": 0.0037484874483197927
+        },
+        {
+          "start_clip_id": 581350,
+          "end_clip_id": 581365,
+          "num_clips": 16,
+          "ttm_probability": 0.248528391122818
+        },
+        {
+          "start_clip_id": 581366,
+          "end_clip_id": 581381,
+          "num_clips": 16,
+          "ttm_probability": 0.2258559912443161
+        },
+        {
+          "start_clip_id": 581382,
+          "end_clip_id": 581397,
+          "num_clips": 16,
+          "ttm_probability": 0.01520293578505516
+        },
+        {
+          "start_clip_id": 581398,
+          "end_clip_id": 581413,
+          "num_clips": 16,
+          "ttm_probability": 0.3738001585006714
+        },
+        {
+          "start_clip_id": 581414,
+          "end_clip_id": 581429,
+          "num_clips": 16,
+          "ttm_probability": 0.4241476356983185
+        },
+        {
+          "start_clip_id": 581430,
+          "end_clip_id": 581445,
+          "num_clips": 16,
+          "ttm_probability": 0.9955684542655945
+        },
+        {
+          "start_clip_id": 581446,
+          "end_clip_id": 581461,
+          "num_clips": 16,
+          "ttm_probability": 0.7638543248176575
+        },
+        {
+          "start_clip_id": 581462,
+          "end_clip_id": 581477,
+          "num_clips": 16,
+          "ttm_probability": 0.3051447868347168
+        },
+        {
+          "start_clip_id": 581478,
+          "end_clip_id": 581493,
+          "num_clips": 16,
+          "ttm_probability": 0.4197784960269928
+        },
+        {
+          "start_clip_id": 581494,
+          "end_clip_id": 581509,
+          "num_clips": 16,
+          "ttm_probability": 0.0046552736312150955
+        },
+        {
+          "start_clip_id": 581510,
+          "end_clip_id": 581525,
+          "num_clips": 16,
+          "ttm_probability": 0.004640559665858746
+        },
+        {
+          "start_clip_id": 581526,
+          "end_clip_id": 581541,
+          "num_clips": 16,
+          "ttm_probability": 0.2789507508277893
+        },
+        {
+          "start_clip_id": 581542,
+          "end_clip_id": 581557,
+          "num_clips": 16,
+          "ttm_probability": 0.5200894474983215
+        },
+        {
+          "start_clip_id": 581558,
+          "end_clip_id": 581573,
+          "num_clips": 16,
+          "ttm_probability": 0.9249483346939087
+        },
+        {
+          "start_clip_id": 581574,
+          "end_clip_id": 581589,
+          "num_clips": 16,
+          "ttm_probability": 0.14216765761375427
+        },
+        {
+          "start_clip_id": 581590,
+          "end_clip_id": 581605,
+          "num_clips": 16,
+          "ttm_probability": 0.008594549261033535
+        },
+        {
+          "start_clip_id": 581606,
+          "end_clip_id": 581621,
+          "num_clips": 16,
+          "ttm_probability": 0.9914024472236633
+        },
+        {
+          "start_clip_id": 581622,
+          "end_clip_id": 581637,
+          "num_clips": 16,
+          "ttm_probability": 0.004677607212215662
+        },
+        {
+          "start_clip_id": 581638,
+          "end_clip_id": 581653,
+          "num_clips": 16,
+          "ttm_probability": 0.0062065692618489265
+        },
+        {
+          "start_clip_id": 581654,
+          "end_clip_id": 581669,
+          "num_clips": 16,
+          "ttm_probability": 0.00711815245449543
+        },
+        {
+          "start_clip_id": 581670,
+          "end_clip_id": 581685,
+          "num_clips": 16,
+          "ttm_probability": 0.07966584712266922
+        },
+        {
+          "start_clip_id": 581686,
+          "end_clip_id": 581701,
+          "num_clips": 16,
+          "ttm_probability": 0.932986319065094
+        },
+        {
+          "start_clip_id": 581702,
+          "end_clip_id": 581717,
+          "num_clips": 16,
+          "ttm_probability": 0.32757195830345154
+        },
+        {
+          "start_clip_id": 581718,
+          "end_clip_id": 581733,
+          "num_clips": 16,
+          "ttm_probability": 0.3103013038635254
+        },
+        {
+          "start_clip_id": 581734,
+          "end_clip_id": 581749,
+          "num_clips": 16,
+          "ttm_probability": 0.3660232126712799
+        },
+        {
+          "start_clip_id": 581750,
+          "end_clip_id": 581765,
+          "num_clips": 16,
+          "ttm_probability": 0.0035909635480493307
+        },
+        {
+          "start_clip_id": 581766,
+          "end_clip_id": 581781,
+          "num_clips": 16,
+          "ttm_probability": 0.022532282397150993
+        },
+        {
+          "start_clip_id": 581782,
+          "end_clip_id": 581797,
+          "num_clips": 16,
+          "ttm_probability": 0.006449788808822632
+        },
+        {
+          "start_clip_id": 581798,
+          "end_clip_id": 581813,
+          "num_clips": 16,
+          "ttm_probability": 0.014342489652335644
+        },
+        {
+          "start_clip_id": 581814,
+          "end_clip_id": 581829,
+          "num_clips": 16,
+          "ttm_probability": 0.30956608057022095
+        },
+        {
+          "start_clip_id": 581830,
+          "end_clip_id": 581845,
+          "num_clips": 16,
+          "ttm_probability": 0.0036095576360821724
+        },
+        {
+          "start_clip_id": 581846,
+          "end_clip_id": 581861,
+          "num_clips": 16,
+          "ttm_probability": 0.023091290146112442
+        },
+        {
+          "start_clip_id": 581862,
+          "end_clip_id": 581877,
+          "num_clips": 16,
+          "ttm_probability": 0.016611674800515175
+        },
+        {
+          "start_clip_id": 581878,
+          "end_clip_id": 581893,
+          "num_clips": 16,
+          "ttm_probability": 0.2554691433906555
+        },
+        {
+          "start_clip_id": 581894,
+          "end_clip_id": 581909,
+          "num_clips": 16,
+          "ttm_probability": 0.004217005334794521
+        },
+        {
+          "start_clip_id": 581910,
+          "end_clip_id": 581925,
+          "num_clips": 16,
+          "ttm_probability": 0.012187736108899117
+        },
+        {
+          "start_clip_id": 581926,
+          "end_clip_id": 581941,
+          "num_clips": 16,
+          "ttm_probability": 0.9884272217750549
+        },
+        {
+          "start_clip_id": 581942,
+          "end_clip_id": 581957,
+          "num_clips": 16,
+          "ttm_probability": 0.981517493724823
+        },
+        {
+          "start_clip_id": 581958,
+          "end_clip_id": 581973,
+          "num_clips": 16,
+          "ttm_probability": 0.7912368774414062
+        },
+        {
+          "start_clip_id": 581974,
+          "end_clip_id": 581989,
+          "num_clips": 16,
+          "ttm_probability": 0.3634469509124756
+        },
+        {
+          "start_clip_id": 581990,
+          "end_clip_id": 582005,
+          "num_clips": 16,
+          "ttm_probability": 0.010755316354334354
+        },
+        {
+          "start_clip_id": 582006,
+          "end_clip_id": 582021,
+          "num_clips": 16,
+          "ttm_probability": 0.9942281246185303
+        },
+        {
+          "start_clip_id": 582022,
+          "end_clip_id": 582037,
+          "num_clips": 16,
+          "ttm_probability": 0.26649826765060425
+        },
+        {
+          "start_clip_id": 582038,
+          "end_clip_id": 582053,
+          "num_clips": 16,
+          "ttm_probability": 0.34329888224601746
+        },
+        {
+          "start_clip_id": 582054,
+          "end_clip_id": 582069,
+          "num_clips": 16,
+          "ttm_probability": 0.2553589642047882
+        },
+        {
+          "start_clip_id": 582070,
+          "end_clip_id": 582085,
+          "num_clips": 16,
+          "ttm_probability": 0.9956645369529724
+        },
+        {
+          "start_clip_id": 582086,
+          "end_clip_id": 582101,
+          "num_clips": 16,
+          "ttm_probability": 0.21048979461193085
+        },
+        {
+          "start_clip_id": 582102,
+          "end_clip_id": 582117,
+          "num_clips": 16,
+          "ttm_probability": 0.09963202476501465
+        },
+        {
+          "start_clip_id": 582118,
+          "end_clip_id": 582133,
+          "num_clips": 16,
+          "ttm_probability": 0.0036645131185650826
+        },
+        {
+          "start_clip_id": 582134,
+          "end_clip_id": 582149,
+          "num_clips": 16,
+          "ttm_probability": 0.00395689532160759
+        },
+        {
+          "start_clip_id": 582150,
+          "end_clip_id": 582165,
+          "num_clips": 16,
+          "ttm_probability": 0.0031831508968025446
+        },
+        {
+          "start_clip_id": 582166,
+          "end_clip_id": 582181,
+          "num_clips": 16,
+          "ttm_probability": 0.015110384672880173
+        },
+        {
+          "start_clip_id": 582182,
+          "end_clip_id": 582197,
+          "num_clips": 16,
+          "ttm_probability": 0.0048561012372374535
+        },
+        {
+          "start_clip_id": 582198,
+          "end_clip_id": 582213,
+          "num_clips": 16,
+          "ttm_probability": 0.017837531864643097
+        },
+        {
+          "start_clip_id": 582214,
+          "end_clip_id": 582229,
+          "num_clips": 16,
+          "ttm_probability": 0.9933700561523438
+        },
+        {
+          "start_clip_id": 582230,
+          "end_clip_id": 582245,
+          "num_clips": 16,
+          "ttm_probability": 0.004254179075360298
+        },
+        {
+          "start_clip_id": 582246,
+          "end_clip_id": 582261,
+          "num_clips": 16,
+          "ttm_probability": 0.018461093306541443
+        },
+        {
+          "start_clip_id": 582262,
+          "end_clip_id": 582273,
+          "num_clips": 12,
+          "ttm_probability": 0.9562979340553284
+        }
+      ]
+    }
+  ]
+}

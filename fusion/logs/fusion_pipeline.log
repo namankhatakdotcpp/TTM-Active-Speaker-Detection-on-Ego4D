@@ -1,0 +1,251 @@
+
+Extracting video embeddings (train)...
+  Using video checkpoint: /usershome/cs671_user13/group_42/video_cnn/checkpoints/best_model.pth
+Using cache found in /usershome/cs671_user13/.cache/torch/hub/facebookresearch_pytorchvideo_main
+[TTMClipDataset] train: 581,142 clips loaded
+  Video embeds: 10,048/581,142
+  Video embeds: 20,032/581,142
+  Video embeds: 30,016/581,142
+  Video embeds: 40,000/581,142
+  Video embeds: 50,048/581,142
+  Video embeds: 60,032/581,142
+  Video embeds: 70,016/581,142
+  Video embeds: 80,000/581,142
+  Video embeds: 90,048/581,142
+  Video embeds: 100,032/581,142
+  Video embeds: 110,016/581,142
+  Video embeds: 120,000/581,142
+  Video embeds: 130,048/581,142
+  Video embeds: 140,032/581,142
+  Video embeds: 150,016/581,142
+  Video embeds: 160,000/581,142
+  Video embeds: 170,048/581,142
+  Video embeds: 180,032/581,142
+  Video embeds: 190,016/581,142
+  Video embeds: 200,000/581,142
+  Video embeds: 210,048/581,142
+  Video embeds: 220,032/581,142
+  Video embeds: 230,016/581,142
+  Video embeds: 240,000/581,142
+  Video embeds: 250,048/581,142
+  Video embeds: 260,032/581,142
+  Video embeds: 270,016/581,142
+  Video embeds: 280,000/581,142
+  Video embeds: 290,048/581,142
+  Video embeds: 300,032/581,142
+  Video embeds: 310,016/581,142
+  Video embeds: 320,000/581,142
+  Video embeds: 330,048/581,142
+  Video embeds: 340,032/581,142
+  Video embeds: 350,016/581,142
+  Video embeds: 360,000/581,142
+  Video embeds: 370,048/581,142
+  Video embeds: 380,032/581,142
+  Video embeds: 390,016/581,142
+  Video embeds: 400,000/581,142
+  Video embeds: 410,048/581,142
+  Video embeds: 420,032/581,142
+  Video embeds: 430,016/581,142
+  Video embeds: 440,000/581,142
+  Video embeds: 450,048/581,142
+  Video embeds: 460,032/581,142
+  Video embeds: 470,016/581,142
+  Video embeds: 480,000/581,142
+  Video embeds: 490,048/581,142
+  Video embeds: 500,032/581,142
+  Video embeds: 510,016/581,142
+  Video embeds: 520,000/581,142
+  Video embeds: 530,048/581,142
+  Video embeds: 540,032/581,142
+  Video embeds: 550,016/581,142
+  Video embeds: 560,000/581,142
+  Video embeds: 570,048/581,142
+  Video embeds: 580,032/581,142
+  Video embeddings saved: 581,142
+
+Extracting audio embeddings (train)...
+  Using audio checkpoint: /usershome/cs671_user13/group_42/audio_cnn/checkpoints_balanced/best_model.pth
+[AudioClipDataset] train: 32,645 clips loaded
+  Audio embeds: 10,048/32,645
+  Audio embeds: 20,032/32,645
+  Audio embeds: 30,016/32,645
+  Audio embeddings saved: 32,645
+
+Extracting video embeddings (val)...
+  Using video checkpoint: /usershome/cs671_user13/group_42/video_cnn/checkpoints/best_model.pth
+Using cache found in /usershome/cs671_user13/.cache/torch/hub/facebookresearch_pytorchvideo_main
+[TTMClipDataset] val: 55,264 clips loaded
+  Video embeds: 10,048/55,264
+  Video embeds: 20,032/55,264
+  Video embeds: 30,016/55,264
+  Video embeds: 40,000/55,264
+  Video embeds: 50,048/55,264
+  Video embeddings saved: 55,264
+
+Extracting audio embeddings (val)...
+  Using audio checkpoint: /usershome/cs671_user13/group_42/audio_cnn/checkpoints_balanced/best_model.pth
+[AudioClipDataset] val: 5,358 clips loaded
+  Audio embeddings saved: 5,358
+
+Embedding extraction complete.
+Device: cuda
+
+Loading fusion datasets from: /usershome/cs671_user13/group_42/../ego4d_data/v2/full_scale/pipeline/data/clips_index.csv
+[FusionDataset] train: 153 utterances loaded
+[FusionDataset] val: 13 utterances loaded
+Class weights — neg: 0.539  pos: 6.955
+
+Fusion model params — total: 3.68M  trainable: 3.68M
+/usershome/cs671_user13/group_42/fusion/train_fusion.py:159: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler    = GradScaler(enabled=(device.type == "cuda"))
+
+Training fusion: 30 epochs, batch=64
+
+Epoch [1/30]  lr=5.00e-04
+/usershome/cs671_user13/group_42/fusion/train_fusion.py:92: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast(enabled=(device.type == "cuda")):
+
+
+  train loss=0.6968 acc=0.8828 | val loss=0.6223 acc=0.9231 | time=0.0min
+  >> Best model saved (val_acc=0.9231)
+Epoch [2/30]  lr=4.99e-04
+
+
+  train loss=0.6462 acc=0.7422 | val loss=0.6204 acc=0.9231 | time=0.0min
+Epoch [3/30]  lr=4.95e-04
+
+
+  train loss=0.5262 acc=0.9531 | val loss=0.3268 acc=1.0000 | time=0.0min
+  >> Best model saved (val_acc=1.0000)
+Epoch [4/30]  lr=4.88e-04
+
+
+  train loss=0.5370 acc=0.9375 | val loss=0.3299 acc=0.9231 | time=0.0min
+Epoch [5/30]  lr=4.78e-04
+
+
+  train loss=0.5081 acc=0.9219 | val loss=0.6080 acc=0.6923 | time=0.0min
+Epoch [6/30]  lr=4.67e-04
+
+
+  train loss=0.3815 acc=0.9375 | val loss=0.4091 acc=0.9231 | time=0.0min
+Epoch [7/30]  lr=4.52e-04
+
+
+  train loss=0.2667 acc=0.9609 | val loss=0.4424 acc=0.8462 | time=0.0min
+Epoch [8/30]  lr=4.36e-04
+
+
+  train loss=0.2032 acc=0.9453 | val loss=0.2633 acc=0.9231 | time=0.0min
+Epoch [9/30]  lr=4.17e-04
+
+
+  train loss=0.1088 acc=0.9609 | val loss=0.0783 acc=0.9231 | time=0.0min
+Epoch [10/30]  lr=3.97e-04
+
+
+  train loss=0.0803 acc=0.9844 | val loss=0.1254 acc=0.9231 | time=0.0min
+Epoch [11/30]  lr=3.75e-04
+
+
+  train loss=0.0554 acc=0.9531 | val loss=0.3365 acc=0.9231 | time=0.0min
+Epoch [12/30]  lr=3.52e-04
+
+
+  train loss=0.0446 acc=0.9766 | val loss=0.0174 acc=1.0000 | time=0.0min
+Epoch [13/30]  lr=3.28e-04
+
+
+  train loss=0.0520 acc=0.9922 | val loss=0.0069 acc=1.0000 | time=0.0min
+Epoch [14/30]  lr=3.02e-04
+
+
+  train loss=0.0181 acc=1.0000 | val loss=0.0151 acc=1.0000 | time=0.0min
+Epoch [15/30]  lr=2.77e-04
+
+
+  train loss=0.0166 acc=0.9844 | val loss=0.0590 acc=1.0000 | time=0.0min
+Epoch [16/30]  lr=2.51e-04
+
+
+  train loss=0.0085 acc=0.9922 | val loss=0.1203 acc=0.9231 | time=0.0min
+Epoch [17/30]  lr=2.24e-04
+
+
+  train loss=0.0146 acc=0.9922 | val loss=0.0961 acc=0.9231 | time=0.0min
+Epoch [18/30]  lr=1.99e-04
+
+
+  train loss=0.0085 acc=0.9922 | val loss=0.0373 acc=1.0000 | time=0.0min
+Epoch [19/30]  lr=1.73e-04
+
+
+  train loss=0.0055 acc=0.9922 | val loss=0.0121 acc=1.0000 | time=0.0min
+Epoch [20/30]  lr=1.49e-04
+
+
+  train loss=0.0040 acc=1.0000 | val loss=0.0056 acc=1.0000 | time=0.0min
+Epoch [21/30]  lr=1.26e-04
+
+
+  train loss=0.0036 acc=1.0000 | val loss=0.0036 acc=1.0000 | time=0.0min
+Epoch [22/30]  lr=1.04e-04
+
+
+  train loss=0.0021 acc=1.0000 | val loss=0.0029 acc=1.0000 | time=0.0min
+Epoch [23/30]  lr=8.36e-05
+
+
+  train loss=0.0028 acc=1.0000 | val loss=0.0026 acc=1.0000 | time=0.0min
+Epoch [24/30]  lr=6.51e-05
+
+
+  train loss=0.0027 acc=1.0000 | val loss=0.0025 acc=1.0000 | time=0.0min
+Epoch [25/30]  lr=4.87e-05
+
+
+  train loss=0.0013 acc=1.0000 | val loss=0.0025 acc=1.0000 | time=0.0min
+Epoch [26/30]  lr=3.44e-05
+
+
+  train loss=0.0026 acc=1.0000 | val loss=0.0025 acc=1.0000 | time=0.0min
+Epoch [27/30]  lr=2.26e-05
+
+
+  train loss=0.0017 acc=1.0000 | val loss=0.0025 acc=1.0000 | time=0.0min
+Epoch [28/30]  lr=1.32e-05
+
+
+  train loss=0.0018 acc=1.0000 | val loss=0.0025 acc=1.0000 | time=0.0min
+Epoch [29/30]  lr=6.45e-06
+
+
+  train loss=0.0014 acc=1.0000 | val loss=0.0025 acc=1.0000 | time=0.0min
+Epoch [30/30]  lr=2.37e-06
+
+
+  train loss=0.0020 acc=1.0000 | val loss=0.0025 acc=1.0000 | time=0.0min
+
+Done. Best val acc: 1.0000
+
+Loading model from: /usershome/cs671_user13/group_42/fusion/checkpoints/best_model.pth
+Loading val dataset...
+[FusionDataset] val: 13 utterances loaded
+
+Computing metrics...
+/usershome/cs671_user13/.local/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:379: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/usershome/cs671_user13/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py:407: UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, use the 'labels' parameter to pass all known labels.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/usershome/cs671_user13/group_42/fusion/evaluate_fusion.py", line 128, in <module>
+    main()
+  File "/usershome/cs671_user13/group_42/fusion/evaluate_fusion.py", line 103, in main
+    metrics = compute_metrics(y_true, y_proba)
+  File "/usershome/cs671_user13/group_42/fusion/evaluate_fusion.py", line 59, in compute_metrics
+    report = classification_report(y_true, y_pred,
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 216, in wrapper
+    return func(*args, **kwargs)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/sklearn/metrics/_classification.py", line 2693, in classification_report
+    raise ValueError(
+ValueError: Number of classes, 1, does not match size of target_names, 2. Try specifying the labels parameter

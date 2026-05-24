@@ -1,0 +1,530 @@
+nohup: ignoring input
+Device: cuda
+
+Loading dataset from: /usershome/cs671_user13/ego4d_data/v2/full_scale/pipeline/data/balanced_clips_70k.csv
+
+  Total clips : 70,000
+  Train clips : 55,408 | tracks=586 | neg=27,652 (49.9%) | pos=27,756 (50.1%)
+  Val   clips : 14,592 | tracks=146 | neg=7,348 (50.4%) | pos=7,244 (49.6%)
+
+[FusionDataset] train
+  tracks        : 586
+  windows total : 14,075  (kept=13,680  skipped=395 below min_clips=4)
+  neg / pos     : 6,130 / 7,550  (ratio 0.81:1)
+  avg windows/track : 23.3
+  avg padding/window: 3.4%  (t_seq=16, stride=4, min_clips=4)
+  audio coverage    : 13,680/13,680 windows (100.0%) have ≥1 real audio embed
+
+[FusionDataset] val
+  tracks        : 146
+  windows total : 1,000  (kept=941  skipped=59 below min_clips=4)
+  neg / pos     : 439 / 502  (ratio 0.87:1)
+  avg windows/track : 6.4
+  avg padding/window: 3.7%  (t_seq=16, stride=16, min_clips=4)
+  audio coverage    : 941/941 windows (100.0%) have ≥1 real audio embed
+
+======================================================
+SPLIT VERIFICATION
+======================================================
+  Train : 13,680 windows | 387 tracks
+  Val   : 941 windows  | 96 tracks
+
+  OK — zero track overlap between train and val.
+  Train  neg=6,130 (44.8%)  pos=7,550 (55.2%)
+  Val    neg=439 (46.7%)  pos=502 (53.3%)
+======================================================
+
+
+  Model params — total: 4.74M  trainable: 4.74M
+
+  ==================================================================
+  TRAINING CONFIGURATION
+  ==================================================================
+  CSV          : balanced_clips_70k.csv
+  Split source : pre-computed split column
+  Train clips  : 55,408 | tracks=586
+  Val   clips  : 14,592  | tracks=146
+  Train windows: 13,680  neg=6,130 pos=7,550
+  Val   windows: 941   neg=439 pos=502
+  ──────────────────────────────────────────────────────────────────
+  Epochs       : 50  (early stop patience=10)
+  Batch size   : 256
+  LR           : 0.0003  (ReduceLROnPlateau ×0.5 after 3 stagnant epochs)
+  Weight decay : 0.0005
+  Dropout      : 0.5
+  Threshold    : 0.5 (fixed during training; tuned once post-training)
+  Fusion       : cross_attn  cross_attn_layers=2
+  Sampler      : ON  (window 50:50, CrossEntropyLoss + label_smoothing=0.1)
+  Early stop   : patience=10  metric=val AP
+  Device       : cuda
+  ==================================================================
+
+Epoch [1/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.7970 | acc 0.5595 | ETA 0.0min   
+
+  train loss=0.7892 acc=0.5617 | val loss=0.7095 acc=0.5458 f1=0.6879 AP=0.6491 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 1  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM               33   406
+         TTM                   26   476
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.5397  recall=0.9482  F1=0.6879  AP=0.6491
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.56      0.08      0.13       439
+         TTM       0.54      0.95      0.69       502
+
+    accuracy                           0.54       941
+   macro avg       0.55      0.51      0.41       941
+weighted avg       0.55      0.54      0.43       941
+
+  >> Best model saved  AP=0.6491  F1=0.6879  acc=0.5458
+Epoch [2/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.6558 | acc 0.6116 | ETA 0.0min   
+
+  train loss=0.6528 acc=0.6160 | val loss=0.6654 acc=0.6444 f1=0.6399 AP=0.7126 | time=0.2min
+
+  ──────────────────────────────────────────────────────
+  Epoch 2  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              314   125
+         TTM                  207   295
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.7024  recall=0.5876  F1=0.6399  AP=0.7126
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.60      0.72      0.65       439
+         TTM       0.70      0.59      0.64       502
+
+    accuracy                           0.65       941
+   macro avg       0.65      0.65      0.65       941
+weighted avg       0.66      0.65      0.65       941
+
+  >> Best model saved  AP=0.7126  F1=0.6399  acc=0.6444
+Epoch [3/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.6075 | acc 0.6655 | ETA 0.0min   
+
+  train loss=0.6074 acc=0.6680 | val loss=0.6530 acc=0.6563 f1=0.7062 AP=0.7405 | time=0.2min
+
+  ──────────────────────────────────────────────────────
+  Epoch 3  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              221   218
+         TTM                  109   393
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6432  recall=0.7829  F1=0.7062  AP=0.7405
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.67      0.50      0.57       439
+         TTM       0.64      0.78      0.71       502
+
+    accuracy                           0.65       941
+   macro avg       0.66      0.64      0.64       941
+weighted avg       0.66      0.65      0.64       941
+
+  >> Best model saved  AP=0.7405  F1=0.7062  acc=0.6563
+Epoch [4/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.5955 | acc 0.6848 | ETA 0.0min   
+
+  train loss=0.5996 acc=0.6823 | val loss=0.6686 acc=0.6572 f1=0.7082 AP=0.7663 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 4  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              215   224
+         TTM                  104   398
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6399  recall=0.7928  F1=0.7082  AP=0.7663
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.67      0.49      0.57       439
+         TTM       0.64      0.79      0.71       502
+
+    accuracy                           0.65       941
+   macro avg       0.66      0.64      0.64       941
+weighted avg       0.66      0.65      0.64       941
+
+  >> Best model saved  AP=0.7663  F1=0.7082  acc=0.6572
+Epoch [5/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.5692 | acc 0.7009 | ETA 0.0min   
+
+  train loss=0.5663 acc=0.7050 | val loss=0.6014 acc=0.6860 f1=0.7146 AP=0.7980 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 5  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              270   169
+         TTM                  129   373
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6882  recall=0.7430  F1=0.7146  AP=0.7980
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.68      0.62      0.64       439
+         TTM       0.69      0.74      0.71       502
+
+    accuracy                           0.68       941
+   macro avg       0.68      0.68      0.68       941
+weighted avg       0.68      0.68      0.68       941
+
+  >> Best model saved  AP=0.7980  F1=0.7146  acc=0.6860
+Epoch [6/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.5510 | acc 0.7384 | ETA 0.0min   
+
+  train loss=0.5493 acc=0.7396 | val loss=0.6008 acc=0.6943 f1=0.7155 AP=0.8025 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 6  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              284   155
+         TTM                  136   366
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.7025  recall=0.7291  F1=0.7155  AP=0.8025
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.68      0.65      0.66       439
+         TTM       0.70      0.73      0.72       502
+
+    accuracy                           0.69       941
+   macro avg       0.69      0.69      0.69       941
+weighted avg       0.69      0.69      0.69       941
+
+  >> Best model saved  AP=0.8025  F1=0.7155  acc=0.6943
+Epoch [7/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.5687 | acc 0.7227 | ETA 0.0min   
+
+  train loss=0.5659 acc=0.7248 | val loss=0.7114 acc=0.6781 f1=0.7149 AP=0.7757 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 7  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              249   190
+         TTM                  117   385
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6696  recall=0.7669  F1=0.7149  AP=0.7757
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.68      0.57      0.62       439
+         TTM       0.67      0.77      0.71       502
+
+    accuracy                           0.67       941
+   macro avg       0.67      0.67      0.67       941
+weighted avg       0.67      0.67      0.67       941
+
+  EarlyStopping counter: 1/10
+Epoch [8/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.5232 | acc 0.7505 | ETA 0.0min   
+
+  train loss=0.5273 acc=0.7441 | val loss=0.5992 acc=0.7022 f1=0.7246 AP=0.8170 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 8  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              295   144
+         TTM                  135   367
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.7182  recall=0.7311  F1=0.7246  AP=0.8170
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.69      0.67      0.68       439
+         TTM       0.72      0.73      0.72       502
+
+    accuracy                           0.70       941
+   macro avg       0.70      0.70      0.70       941
+weighted avg       0.70      0.70      0.70       941
+
+  >> Best model saved  AP=0.8170  F1=0.7246  acc=0.7022
+Epoch [9/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.5084 | acc 0.7616 | ETA 0.0min   
+
+  train loss=0.5107 acc=0.7611 | val loss=0.7283 acc=0.6800 f1=0.6810 AP=0.8157 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 9  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              327   112
+         TTM                  185   317
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.7389  recall=0.6315  F1=0.6810  AP=0.8157
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.64      0.74      0.69       439
+         TTM       0.74      0.63      0.68       502
+
+    accuracy                           0.68       941
+   macro avg       0.69      0.69      0.68       941
+weighted avg       0.69      0.68      0.68       941
+
+  EarlyStopping counter: 1/10
+Epoch [10/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.5327 | acc 0.7314 | ETA 0.0min   
+
+  train loss=0.5307 acc=0.7295 | val loss=0.6372 acc=0.6845 f1=0.7389 AP=0.7933 | time=0.2min
+
+  ──────────────────────────────────────────────────────
+  Epoch 10  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              214   225
+         TTM                   76   426
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6544  recall=0.8486  F1=0.7389  AP=0.7933
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.74      0.49      0.59       439
+         TTM       0.65      0.85      0.74       502
+
+    accuracy                           0.68       941
+   macro avg       0.70      0.67      0.66       941
+weighted avg       0.69      0.68      0.67       941
+
+  EarlyStopping counter: 2/10
+Epoch [11/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.4902 | acc 0.7916 | ETA 0.0min   
+
+  train loss=0.4897 acc=0.7835 | val loss=0.7512 acc=0.6915 f1=0.7042 AP=0.7846 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 11  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              308   131
+         TTM                  158   344
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.7242  recall=0.6853  F1=0.7042  AP=0.7846
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.66      0.70      0.68       439
+         TTM       0.72      0.69      0.70       502
+
+    accuracy                           0.69       941
+   macro avg       0.69      0.69      0.69       941
+weighted avg       0.69      0.69      0.69       941
+
+  EarlyStopping counter: 3/10
+Epoch [12/50]  lr=3.00e-04
+  [train] 50/53 | loss 0.5033 | acc 0.7647 | ETA 0.0min   
+
+  train loss=0.5037 acc=0.7670 | val loss=0.8019 acc=0.6627 f1=0.7256 AP=0.7686 | time=0.3min  *** LR reduced → 1.50e-04
+
+  ──────────────────────────────────────────────────────
+  Epoch 12  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              198   241
+         TTM                   79   423
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6370  recall=0.8426  F1=0.7256  AP=0.7686
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.71      0.45      0.55       439
+         TTM       0.64      0.84      0.73       502
+
+    accuracy                           0.66       941
+   macro avg       0.68      0.65      0.64       941
+weighted avg       0.67      0.66      0.65       941
+
+  EarlyStopping counter: 4/10
+Epoch [13/50]  lr=1.50e-04
+  [train] 50/53 | loss 0.4530 | acc 0.7955 | ETA 0.0min   
+
+  train loss=0.4493 acc=0.8004 | val loss=0.6951 acc=0.6754 f1=0.7271 AP=0.7946 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 13  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              225   214
+         TTM                   93   409
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6565  recall=0.8147  F1=0.7271  AP=0.7946
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.71      0.51      0.59       439
+         TTM       0.66      0.81      0.73       502
+
+    accuracy                           0.67       941
+   macro avg       0.68      0.66      0.66       941
+weighted avg       0.68      0.67      0.67       941
+
+  EarlyStopping counter: 5/10
+Epoch [14/50]  lr=1.50e-04
+  [train] 50/53 | loss 0.4324 | acc 0.8001 | ETA 0.0min   
+
+  train loss=0.4271 acc=0.8069 | val loss=0.7667 acc=0.6926 f1=0.6995 AP=0.7949 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 14  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              320   119
+         TTM                  168   334
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.7373  recall=0.6653  F1=0.6995  AP=0.7949
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.66      0.73      0.69       439
+         TTM       0.74      0.67      0.70       502
+
+    accuracy                           0.70       941
+   macro avg       0.70      0.70      0.69       941
+weighted avg       0.70      0.70      0.70       941
+
+  EarlyStopping counter: 6/10
+Epoch [15/50]  lr=1.50e-04
+  [train] 50/53 | loss 0.3701 | acc 0.8756 | ETA 0.0min   
+
+  train loss=0.3732 acc=0.8737 | val loss=0.7476 acc=0.6822 f1=0.7350 AP=0.7780 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 15  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              225   214
+         TTM                   86   416
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6603  recall=0.8287  F1=0.7350  AP=0.7780
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.72      0.51      0.60       439
+         TTM       0.66      0.83      0.73       502
+
+    accuracy                           0.68       941
+   macro avg       0.69      0.67      0.67       941
+weighted avg       0.69      0.68      0.67       941
+
+  EarlyStopping counter: 7/10
+Epoch [16/50]  lr=1.50e-04
+  [train] 50/53 | loss 0.3896 | acc 0.8685 | ETA 0.0min   
+
+  train loss=0.3926 acc=0.8689 | val loss=0.7764 acc=0.6829 f1=0.7261 AP=0.7261 | time=0.2min  *** LR reduced → 7.50e-05
+
+  ──────────────────────────────────────────────────────
+  Epoch 16  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              255   184
+         TTM                  111   391
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6800  recall=0.7789  F1=0.7261  AP=0.7261
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.70      0.58      0.63       439
+         TTM       0.68      0.78      0.73       502
+
+    accuracy                           0.69       941
+   macro avg       0.69      0.68      0.68       941
+weighted avg       0.69      0.69      0.68       941
+
+  EarlyStopping counter: 8/10
+Epoch [17/50]  lr=7.50e-05
+  [train] 50/53 | loss 0.3854 | acc 0.8614 | ETA 0.0min   
+
+  train loss=0.3948 acc=0.8550 | val loss=0.7821 acc=0.6867 f1=0.7226 AP=0.7632 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 17  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              264   175
+         TTM                  119   383
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6864  recall=0.7629  F1=0.7226  AP=0.7632
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.69      0.60      0.64       439
+         TTM       0.69      0.76      0.72       502
+
+    accuracy                           0.69       941
+   macro avg       0.69      0.68      0.68       941
+weighted avg       0.69      0.69      0.69       941
+
+  EarlyStopping counter: 9/10
+Epoch [18/50]  lr=7.50e-05
+  [train] 50/53 | loss 0.4090 | acc 0.8468 | ETA 0.0min   
+
+  train loss=0.4022 acc=0.8528 | val loss=0.7965 acc=0.6667 f1=0.7213 AP=0.7783 | time=0.3min
+
+  ──────────────────────────────────────────────────────
+  Epoch 18  |  threshold = 0.50
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              223   216
+         TTM                   97   405
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6522  recall=0.8068  F1=0.7213  AP=0.7783
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.70      0.51      0.59       439
+         TTM       0.65      0.81      0.72       502
+
+    accuracy                           0.67       941
+   macro avg       0.67      0.66      0.65       941
+weighted avg       0.67      0.67      0.66       941
+
+  EarlyStopping counter: 10/10
+
+Early stopping triggered.
+
+======================================================
+POST-TRAINING THRESHOLD TUNING  (done once, on best model)
+======================================================
+
+
+  AUC-PR  : 0.8170  (random baseline: 0.5335)
+
+  Threshold=0.50  F1=0.7246
+  Threshold=0.275  F1=0.7520  ← optimal (used for inference)
+  Gain from threshold tuning: +0.0274
+
+── Metrics at optimal threshold ──
+
+  ──────────────────────────────────────────────────────
+  Epoch final  |  threshold = 0.28
+  ──────────────────────────────────────────────────────
+                        Predicted non-TTM  TTM
+  Actual non-TTM              171   268
+         TTM                   38   464
+  ──────────────────────────────────────────────────────
+  TTM  precision=0.6339  recall=0.9243  F1=0.7520  AP=0.8170
+  ──────────────────────────────────────────────────────
+              precision    recall  f1-score   support
+
+     non-TTM       0.82      0.39      0.53       439
+         TTM       0.63      0.92      0.75       502
+
+    accuracy                           0.67       941
+   macro avg       0.73      0.66      0.64       941
+weighted avg       0.72      0.67      0.65       941
+
+
+Done. Best val AP=0.8170  F1@0.5=0.7246  F1@optimal=0.7520  optimal_threshold=0.275
+Results saved to: /usershome/cs671_user13/group_42/fusion/results/metrics.json

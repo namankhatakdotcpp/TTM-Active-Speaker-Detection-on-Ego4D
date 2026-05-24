@@ -1,0 +1,73 @@
+==========================================
+==========================================
+Audio pipeline start: Thu 16 Apr 19:31:42 UTC 2026
+Audio pipeline start: Thu 16 Apr 19:31:42 UTC 2026
+Split: all  |  Workers: 32
+Split: all  |  Workers: 32
+==========================================
+==========================================
+
+
+[19:31:43] Step A1: Extracting spectrograms...
+[19:31:43] Step A1: Extracting spectrograms...
+Reading clips from: /usershome/cs671_user13/group_42/audio_cnn/../../ego4d_data/v2/full_scale/pipeline/data/clips_index.csv
+Clips to process: 636,406  |  Workers: 32
+Output dir: /usershome/cs671_user13/group_42/audio_cnn/data/audio_clips
+Reading clips from: /usershome/cs671_user13/group_42/audio_cnn/../../ego4d_data/v2/full_scale/pipeline/data/clips_index.csv
+Clips to process: 636,406  |  Workers: 32
+Output dir: /usershome/cs671_user13/group_42/audio_cnn/data/audio_clips
+  [500/636,406] saved=500  ETA=793min     [500/636,406] saved=500  ETA=793min   Terminated
+Reading: /usershome/cs671_user13/group_42/audio_cnn/../../ego4d_data/v2/full_scale/pipeline/data/clips_index.csv
+Videos: 166  |  Clips: 636,406  |  Workers: 8
+Strategy: load full audio per video (1 ffmpeg call/video)
+  [1/166 videos] 784 spectrograms  ETA: 1415min     [2/166 videos] 2,001 spectrograms  ETA: 1088min     [3/166 videos] 3,777 spectrograms  ETA: 913min     [4/166 videos] 5,405 spectrograms  ETA: 727min     [5/166 videos] 5,804 spectrograms  ETA: 672min     [6/166 videos] 6,789 spectrograms  ETA: 769min     [7/166 videos] 7,633 spectrograms  ETA: 664min   multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usershome/cs671_user13/miniconda3/envs/ttm/lib/python3.10/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/usershome/cs671_user13/group_42/audio_cnn/step_a1_extract_audio.py", line 108, in _process_video
+    spec     = mel_transform(segment)   # [1, N_MELS, T_frames]
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torchaudio/transforms/_transforms.py", line 619, in forward
+    specgram = self.spectrogram(waveform)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torchaudio/transforms/_transforms.py", line 110, in forward
+    return F.spectrogram(
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torchaudio/functional/functional.py", line 126, in spectrogram
+    spec_f = torch.stft(
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/functional.py", line 702, in stft
+    input = F.pad(input.view(extended_shape), [pad, pad], pad_mode)
+  File "/usershome/cs671_user13/.local/lib/python3.10/site-packages/torch/nn/functional.py", line 5096, in pad
+    return torch._C._nn.pad(input, pad, mode, value)
+RuntimeError: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (200, 200) at dimension 2 of input [1, 1, 1]
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usershome/cs671_user13/group_42/audio_cnn/step_a1_extract_audio.py", line 185, in <module>
+    main()
+  File "/usershome/cs671_user13/group_42/audio_cnn/step_a1_extract_audio.py", line 162, in main
+    for result in pool.imap_unordered(_process_video, video_items):
+  File "/usershome/cs671_user13/miniconda3/envs/ttm/lib/python3.10/multiprocessing/pool.py", line 873, in next
+    raise value
+RuntimeError: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (200, 200) at dimension 2 of input [1, 1, 1]
+Reading: /usershome/cs671_user13/group_42/audio_cnn/../../ego4d_data/v2/full_scale/pipeline/data/clips_index.csv
+Videos: 166  |  Clips: 636,406  |  Workers: 8
+Strategy: load full audio per video (1 ffmpeg call/video)
+  [1/166 videos] 784 spectrograms  ETA: 1469min     [2/166 videos] 2,001 spectrograms  ETA: 1088min     [3/166 videos] 3,629 spectrograms  ETA: 955min     [4/166 videos] 5,405 spectrograms  ETA: 774min     [5/166 videos] 5,804 spectrograms  ETA: 693min     [6/166 videos] 6,789 spectrograms  ETA: 772min     [7/166 videos] 7,633 spectrograms  ETA: 686min     [8/166 videos] 11,673 spectrograms  ETA: 821min     [9/166 videos] 15,991 spectrograms  ETA: 780min   Reading: /usershome/cs671_user13/group_42/audio_cnn/../../ego4d_data/v2/full_scale/pipeline/data/clips_index.csv
+Videos: 166  |  Clips: 636,406  |  Workers: 32
+Strategy: load full audio per video (1 ffmpeg call/video)
+  [1/166 videos] 1,217 spectrograms  ETA: 15min     [2/166 videos] 2,202 spectrograms  ETA: 10min     [3/166 videos] 3,830 spectrograms  ETA: 7min     [4/166 videos] 4,614 spectrograms  ETA: 6min     [5/166 videos] 5,013 spectrograms  ETA: 5min     [6/166 videos] 9,331 spectrograms  ETA: 4min     [7/166 videos] 11,107 spectrograms  ETA: 4min     [8/166 videos] 19,948 spectrograms  ETA: 4min     [9/166 videos] 23,988 spectrograms  ETA: 3min     [10/166 videos] 24,832 spectrograms  ETA: 4min     [11/166 videos] 29,626 spectrograms  ETA: 10min     [12/166 videos] 30,737 spectrograms  ETA: 79min     [13/166 videos] 31,896 spectrograms  ETA: 214min     [14/166 videos] 32,817 spectrograms  ETA: 242min     [15/166 videos] 33,845 spectrograms  ETA: 258min     [16/166 videos] 35,346 spectrograms  ETA: 259min     [17/166 videos] 38,421 spectrograms  ETA: 244min     [18/166 videos] 38,804 spectrograms  ETA: 262min     [19/166 videos] 41,172 spectrograms  ETA: 283min     [20/166 videos] 42,864 spectrograms  ETA: 307min     [21/166 videos] 45,753 spectrograms  ETA: 306min     [22/166 videos] 51,223 spectrograms  ETA: 319min     [23/166 videos] 52,149 spectrograms  ETA: 315min     [24/166 videos] 54,254 spectrograms  ETA: 303min     [25/166 videos] 56,366 spectrograms  ETA: 293min     [26/166 videos] 62,475 spectrograms  ETA: 290min     [27/166 videos] 64,835 spectrograms  ETA: 279min     [28/166 videos] 66,000 spectrograms  ETA: 271min     [29/166 videos] 66,978 spectrograms  ETA: 263min     [30/166 videos] 69,260 spectrograms  ETA: 253min     [31/166 videos] 71,913 spectrograms  ETA: 282min     [32/166 videos] 72,456 spectrograms  ETA: 273min     [33/166 videos] 74,038 spectrograms  ETA: 272min     [34/166 videos] 78,471 spectrograms  ETA: 266min     [35/166 videos] 79,181 spectrograms  ETA: 265min     [36/166 videos] 83,717 spectrograms  ETA: 256min     [37/166 videos] 84,717 spectrograms  ETA: 248min     [38/166 videos] 85,622 spectrograms  ETA: 245min     [39/166 videos] 88,999 spectrograms  ETA: 266min     [40/166 videos] 89,803 spectrograms  ETA: 265min     [41/166 videos] 90,829 spectrograms  ETA: 258min     [42/166 videos] 94,441 spectrograms  ETA: 259min     [43/166 videos] 98,177 spectrograms  ETA: 258min     [44/166 videos] 99,118 spectrograms  ETA: 263min     [45/166 videos] 101,750 spectrograms  ETA: 260min     [46/166 videos] 105,795 spectrograms  ETA: 255min     [47/166 videos] 106,944 spectrograms  ETA: 248min     [48/166 videos] 108,789 spectrograms  ETA: 246min     [49/166 videos] 110,928 spectrograms  ETA: 248min     [50/166 videos] 112,977 spectrograms  ETA: 244min     [51/166 videos] 119,758 spectrograms  ETA: 242min     [52/166 videos] 120,188 spectrograms  ETA: 238min     [53/166 videos] 121,643 spectrograms  ETA: 233min     [54/166 videos] 123,257 spectrograms  ETA: 230min     [55/166 videos] 125,243 spectrograms  ETA: 226min     [56/166 videos] 129,959 spectrograms  ETA: 221min     [57/166 videos] 134,721 spectrograms  ETA: 218min     [58/166 videos] 134,851 spectrograms  ETA: 214min     [59/166 videos] 139,789 spectrograms  ETA: 214min     [60/166 videos] 140,870 spectrograms  ETA: 213min     [61/166 videos] 142,004 spectrograms  ETA: 211min     [62/166 videos] 145,114 spectrograms  ETA: 216min     [63/166 videos] 148,666 spectrograms  ETA: 216min     [64/166 videos] 150,436 spectrograms  ETA: 214min     [65/166 videos] 151,251 spectrograms  ETA: 209min     [66/166 videos] 155,857 spectrograms  ETA: 207min     [67/166 videos] 156,666 spectrograms  ETA: 202min     [68/166 videos] 158,679 spectrograms  ETA: 198min     [69/166 videos] 160,149 spectrograms  ETA: 204min     [70/166 videos] 169,496 spectrograms  ETA: 201min     [71/166 videos] 173,654 spectrograms  ETA: 199min     [72/166 videos] 174,001 spectrograms  ETA: 198min     [73/166 videos] 174,736 spectrograms  ETA: 193min     [74/166 videos] 178,388 spectrograms  ETA: 190min     [75/166 videos] 179,070 spectrograms  ETA: 186min     [76/166 videos] 190,797 spectrograms  ETA: 182min     [77/166 videos] 192,057 spectrograms  ETA: 183min     [78/166 videos] 198,775 spectrograms  ETA: 180min     [79/166 videos] 208,723 spectrograms  ETA: 176min     [80/166 videos] 208,783 spectrograms  ETA: 173min     [81/166 videos] 211,048 spectrograms  ETA: 170min     [82/166 videos] 213,195 spectrograms  ETA: 167min     [83/166 videos] 214,588 spectrograms  ETA: 164min     [84/166 videos] 218,049 spectrograms  ETA: 164min     [85/166 videos] 219,209 spectrograms  ETA: 161min     [86/166 videos] 223,326 spectrograms  ETA: 158min     [87/166 videos] 229,645 spectrograms  ETA: 158min     [88/166 videos] 232,968 spectrograms  ETA: 155min     [89/166 videos] 235,393 spectrograms  ETA: 153min     [90/166 videos] 239,521 spectrograms  ETA: 150min     [91/166 videos] 241,493 spectrograms  ETA: 151min     [92/166 videos] 243,237 spectrograms  ETA: 148min     [93/166 videos] 246,269 spectrograms  ETA: 146min     [94/166 videos] 249,544 spectrograms  ETA: 146min   

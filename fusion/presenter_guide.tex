@@ -1,0 +1,717 @@
+% ============================================================
+%  TTM Challenge – Group 42 | IIT | CS671
+%  PRESENTER'S SCRIPT / SPEAKER NOTES
+%  ~15-minute presentation guide
+%  Compile: pdflatex presenter_guide.tex
+% ============================================================
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2cm]{geometry}
+\usepackage[x11names]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{mdframed}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{fontawesome5}
+
+% ── Color Definitions ────────────────────────────────────────────────────────
+\definecolor{NavyBlue}{RGB}{13,42,74}
+\definecolor{AccBlue}{RGB}{21,101,192}
+\definecolor{AccTeal}{RGB}{0,137,123}
+\definecolor{AccOrange}{RGB}{230,81,0}
+\definecolor{AccPurple}{RGB}{106,27,154}
+\definecolor{AccRed}{RGB}{198,40,40}
+\definecolor{AccGreen}{RGB}{46,125,50}
+\definecolor{LightBg}{RGB}{247,249,252}
+\definecolor{MidText}{RGB}{68,85,102}
+
+% ── Page Style ───────────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{NavyBlue}\bfseries Group 42 $\cdot$ CS671 $\cdot$ IIT}
+\fancyhead[R]{\small\color{NavyBlue} TTM Presenter's Script}
+\fancyfoot[C]{\small\color{MidText}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{NavyBlue}\leaders\hrule height \headrulewidth\hfill}}
+
+% ── Section Styles ───────────────────────────────────────────────────────────
+\titleformat{\section}[block]
+  {\color{white}\bfseries\large\filleft}
+  {}
+  {0pt}
+  {\colorbox{NavyBlue}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\color{white}\bfseries\large #1}}}
+
+% ── Custom boxes ─────────────────────────────────────────────────────────────
+\tcbset{
+  slidebox/.style={
+    colback=LightBg, colframe=NavyBlue,
+    leftrule=5pt, arc=3pt, boxrule=0.5pt,
+    top=6pt, bottom=6pt, left=8pt, right=6pt
+  },
+  timebox/.style={
+    colback=AccOrange!10, colframe=AccOrange,
+    leftrule=4pt, arc=2pt, boxrule=0.4pt,
+    fonttitle=\bfseries\small, coltitle=AccOrange,
+    top=4pt, bottom=4pt, left=6pt, right=4pt
+  },
+  presenterbox/.style={
+    colback=AccBlue!8, colframe=AccBlue,
+    leftrule=4pt, arc=2pt, boxrule=0.4pt,
+    fonttitle=\bfseries\small, coltitle=AccBlue,
+    top=4pt, bottom=4pt, left=6pt, right=4pt
+  },
+  keybox/.style={
+    colback=AccTeal!8, colframe=AccTeal,
+    leftrule=4pt, arc=2pt, boxrule=0.4pt,
+    fonttitle=\bfseries\small, coltitle=AccTeal,
+    top=4pt, bottom=4pt, left=6pt, right=4pt
+  },
+  tipbox/.style={
+    colback=AccPurple!8, colframe=AccPurple,
+    leftrule=4pt, arc=2pt, boxrule=0.4pt,
+    fonttitle=\bfseries\small, coltitle=AccPurple,
+    top=4pt, bottom=4pt, left=6pt, right=4pt
+  }
+}
+
+\newcommand{\slideheading}[3]{%
+  % #1 = slide number, #2 = slide title, #3 = presenter(s)
+  \vspace{0.6cm}
+  \begin{tcolorbox}[slidebox]
+    \textbf{\color{NavyBlue}SLIDE #1 \textemdash\ #2}\\[2pt]
+    \begin{tcolorbox}[presenterbox, title=Presenter(s)]
+      \color{AccBlue}\bfseries #3
+    \end{tcolorbox}
+  \end{tcolorbox}
+}
+
+\newcommand{\timing}[1]{%
+  \begin{tcolorbox}[timebox, title=Suggested Time]
+    \color{AccOrange} #1
+  \end{tcolorbox}
+}
+
+\newcommand{\keypoints}[1]{%
+  \begin{tcolorbox}[keybox, title=Key Points to Cover]
+    #1
+  \end{tcolorbox}
+}
+
+\newcommand{\script}[1]{%
+  \begin{mdframed}[
+    backgroundcolor=white,
+    linecolor=MidText!40,
+    linewidth=0.5pt,
+    leftmargin=0pt,
+    rightmargin=0pt,
+    innerleftmargin=10pt,
+    innerrightmargin=8pt,
+    innertopmargin=8pt,
+    innerbottommargin=8pt,
+    roundcorner=3pt
+  ]
+  \itshape\color{MidText}
+  #1
+  \end{mdframed}
+}
+
+\newcommand{\tip}[1]{%
+  \begin{tcolorbox}[tipbox, title=Presenter Tip]
+    #1
+  \end{tcolorbox}
+}
+
+% ════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ════════════════════════════════════════════════════════════════════════════
+
+% ── COVER PAGE ───────────────────────────────────────────────────────────────
+\begin{titlepage}
+\pagecolor{NavyBlue}
+\color{white}
+\vspace*{2cm}
+\begin{center}
+{\Huge\bfseries PRESENTER'S SCRIPT}\\[0.4cm]
+{\Large\color{AccBlue!70!white} ``Who Is Talking To Me?''}\\[0.2cm]
+{\large TTM Active Speaker Detection on Ego4D}\\[0.5cm]
+{\color{AccOrange}\rule{10cm}{1pt}}\\[0.4cm]
+{\bfseries\large Group 42 $\cdot$ Indian Institute of Technology $\cdot$ CS671}\\[0.3cm]
+{\normalsize Kanika Choudhary $\cdot$ Aman Sharma $\cdot$ Vikky Kumar $\cdot$ Vershita Yadav}\\
+{\normalsize Mihir Chandra $\cdot$ Harshit $\cdot$ Sowmika Rao $\cdot$ Naman}\\[0.6cm]
+{\color{AccOrange}\rule{10cm}{1pt}}\\[0.4cm]
+{\large\bfseries Total Presentation Time: \textasciitilde 15 Minutes}\\[0.2cm]
+{\normalsize 16 Slides $\cdot$ Speaker Notes Per Slide $\cdot$ Role-Assigned Presenters}
+\end{center}
+\vfill
+\begin{center}
+{\small\color{AccBlue!60!white}
+\textbf{Final Results:}
+AUC-ROC = 0.847 $\cdot$
+F1 = 0.668 $\cdot$
+Precision = 0.857 $\cdot$
+Recall = 0.547 $\cdot$
+Accuracy = 72.8\% $\cdot$
+Params = 3.68M
+}
+\end{center}
+\end{titlepage}
+\nopagecolor
+
+% ── OVERVIEW PAGE ─────────────────────────────────────────────────────────────
+\newpage
+\section*{\color{NavyBlue}Presentation Overview \& Timing Guide}
+
+\vspace{0.3cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{} c p{5cm} p{4.2cm} p{2.5cm} @{}}
+\toprule
+\rowcolor{NavyBlue}
+\color{white}\bfseries Slide & \color{white}\bfseries Title & \color{white}\bfseries Presenter(s) & \color{white}\bfseries Time \\
+\midrule
+1  & Title / Introduction          & Kanika Choudhary                & 00:30 \\
+\rowcolor{AccBlue!8}
+2  & TTM Problem Definition        & Kanika Choudhary                & 01:00 \\
+3  & Motivation \& Challenges      & Aman Sharma                     & 01:00 \\
+\rowcolor{AccBlue!8}
+4  & Dataset Overview              & Naman                           & 01:00 \\
+5  & Complete Pipeline Architecture & Mihir Chandra                  & 01:30 \\
+\rowcolor{AccBlue!8}
+6  & Video Processing Pipeline     & Mihir Chandra + Harshit         & 01:30 \\
+7  & Audio Processing Pipeline     & Naman + Sowmika Rao             & 01:30 \\
+\rowcolor{AccBlue!8}
+8  & BiLSTM Temporal Modeling      & Vikky Kumar + Vershita Yadav    & 01:15 \\
+9  & Bahdanau Attention            & Vershita Yadav                  & 01:00 \\
+\rowcolor{AccBlue!8}
+10 & Training Strategy             & Aman Sharma + Vershita Yadav    & 01:00 \\
+11 & Experimental Results          & Kanika Choudhary                & 01:15 \\
+\rowcolor{AccBlue!8}
+12 & Comparison with Prior Work    & Aman Sharma                     & 01:00 \\
+13 & Risks \& Mitigations          & Harshit + Sowmika Rao           & 00:45 \\
+\rowcolor{AccBlue!8}
+14 & Team Role Distribution        & Kanika Choudhary                & 00:30 \\
+15 & Conclusion \& Future Work     & Vikky Kumar                     & 01:00 \\
+\rowcolor{AccBlue!8}
+16 & Thank You / Q\&A              & All Members                     & 00:30 \\
+\midrule
+   & \textbf{Total}               &                                 & \textbf{\textasciitilde 15:15} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.4cm}
+\begin{tcolorbox}[
+  colback=AccOrange!10, colframe=AccOrange,
+  leftrule=5pt, arc=3pt, title={\bfseries Before You Begin --- Quick Checklist}
+]
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item[\checkmark] Advance to your slide \textit{before} you start speaking
+  \item[\checkmark] Speak slowly and clearly --- the audience may not be familiar with ML jargon
+  \item[\checkmark] Use the pointer to highlight diagrams as you describe them
+  \item[\checkmark] Each presenter should stand or be visible when speaking
+  \item[\checkmark] Q\&A: the whole group stays on stage --- answer collectively if unsure
+\end{itemize}
+\end{tcolorbox}
+
+\newpage
+
+% ════════════════════════════════════════════════════════════════════════════
+%  SLIDE-BY-SLIDE SCRIPTS
+% ════════════════════════════════════════════════════════════════════════════
+
+% ── SLIDE 1 ──────────────────────────────────────────────────────────────────
+\slideheading{1}{Title Slide}{Kanika Choudhary}
+
+\timing{$\sim$30 seconds --- Introduction only, do not go into details yet.}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item State the project name and team number
+  \item Mention the dataset (Ego4D) and the task (TTM)
+  \item Briefly show the pipeline acronym so the audience knows what is coming
+  \item Cite the key metric to set expectations: AUC = 0.847
+\end{itemize}
+}
+
+\script{%
+``Good morning / Good afternoon, everyone. We are \textbf{Group 42} from CS671, and our project is titled \textit{`Who Is Talking To Me?'} --- a system for Active Speaker Detection on egocentric video.
+
+The task we are solving is called \textbf{Talking-to-Me}, or TTM for short. Given a short video clip from a wearable first-person camera, we want to automatically detect whether the person in front of the camera is speaking \textit{directly} to the camera wearer.
+
+Our pipeline uses an \textbf{I3D video encoder}, a \textbf{ResNet-18 audio encoder}, fused together through \textbf{cross-modal attention}, followed by a \textbf{bidirectional LSTM} and \textbf{Bahdanau attention} before a final classifier.
+
+We achieved an \textbf{AUC-ROC of 0.847} and an \textbf{F1 score of 0.668} on the balanced test set, with only \textbf{3.68 million parameters}. I will now hand over to my teammates to walk you through each component in detail.''
+}
+
+\tip{Smile and make eye contact. This slide sets the tone. Do not rush --- let the audience read the summary panel on the right side of the slide before moving on.}
+
+% ── SLIDE 2 ──────────────────────────────────────────────────────────────────
+\slideheading{2}{TTM Problem Definition}{Kanika Choudhary}
+
+\timing{$\sim$60 seconds}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Clearly define what TTM means (binary classification)
+  \item Emphasize egocentric (first-person) camera
+  \item Distinguish TTM from general active speaker detection
+  \item Connect to real-world use cases: AR/VR, smart assistants, robotics
+\end{itemize}
+}
+
+\script{%
+``Let me first define the problem clearly.
+
+\textbf{Talking-to-Me, or TTM}, is a binary classification task. Given a short one-to-two second clip from an \textbf{egocentric} --- that means, a first-person wearable --- camera, the goal is to predict whether the visible person is \textbf{talking directly to the camera wearer}. The label is simply: TTM equals 1 if they are addressing you, and 0 if they are not.
+
+Why is this hard? Because the person might be talking --- but to someone else in the same room, not to you. So simply detecting speech is not enough. We need to reason about \textbf{who is being addressed}.
+
+This problem has very direct real-world applications. In \textbf{augmented and virtual reality} headsets, you want the system to identify which virtual agent or menu the user is addressing. In \textbf{smart voice assistants}, the device should respond \textit{only} when the user is directly talking to it --- not every time someone in the background speaks. And in \textbf{social robots and human-computer interaction}, robots need to know who is addressing them in a multi-person conversation.
+
+The key insight is: we need \textbf{both audio and visual cues} together. Lips, face orientation, and the sound of speech must be jointly analyzed.''
+}
+
+\tip{Point to the three application boxes on the right side as you mention AR/VR, smart assistants, and robotics. Pause briefly after each.}
+
+% ── SLIDE 3 ──────────────────────────────────────────────────────────────────
+\slideheading{3}{Motivation \& Challenges}{Aman Sharma}
+
+\timing{$\sim$60 seconds}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Walk through each challenge box
+  \item Emphasize class imbalance --- critical for understanding why AUC/F1 matter more than accuracy
+  \item Explain why audio-only or video-only systems are insufficient
+  \item Lead naturally into ``therefore, we need multimodal fusion''
+\end{itemize}
+}
+
+\script{%
+``Before we dive into our solution, let me explain why this problem is genuinely difficult.
+
+\textbf{First, multiple speakers.} In real social settings, three to five people may talk at the same time. An audio-only system hears all of them and cannot determine who is addressing the camera wearer.
+
+\textbf{Second, occlusions and camera motion.} Because the camera is mounted on a person who is moving, faces can blur, disappear from frame, or appear at unusual angles. This makes video analysis unreliable by itself.
+
+\textbf{Third, lip movement ambiguity.} Someone might move their lips while laughing, whispering, or silently mouthing words. Visual lip motion alone does not prove the person is speaking to you.
+
+\textbf{Fourth, class imbalance.} In the Ego4D dataset, only a small fraction of clips are labelled TTM-positive --- meaning the person is actually talking to the wearer. This means a naive model that always predicts `not talking to me' would get high accuracy but completely fail at the actual task. That is why we use \textbf{AUC-ROC and F1 score} as our primary metrics, not raw accuracy.
+
+\textbf{Finally, pre-training domain gap.} Our video backbones are pretrained on large action recognition datasets like Kinetics-400, which looks very different from close-up social face interactions in Ego4D.
+
+\textbf{The conclusion:} no single modality is enough. Robust TTM detection requires fusing audio and visual features with temporal context --- which is exactly what our model does.''
+}
+
+% ── SLIDE 4 ──────────────────────────────────────────────────────────────────
+\slideheading{4}{Dataset Overview}{Naman}
+
+\timing{$\sim$60 seconds}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Introduce Ego4D --- what it is, how large it is
+  \item Explain the subset we used: 70k training clips, 6390 test clips
+  \item Explain the evaluation metrics and why each matters
+  \item Highlight the precision/recall tradeoff early so the results slide makes sense
+\end{itemize}
+}
+
+\script{%
+``Our dataset is the \textbf{Ego4D Social Benchmark}, part of the large-scale Ego4D project from Facebook AI Research. Ego4D contains over \textbf{700 hours} of egocentric video captured from daily life scenarios --- people cooking, socializing, playing sports, and having conversations.
+
+For the TTM task, each clip is annotated with a binary label: is the visible person talking directly to the camera wearer or not? Video is at 30 frames per second, 1080p resolution, and audio is at 16 kHz.
+
+We used a balanced subset of \textbf{70,000 training clips} for our model. The official \textbf{test set contains 6,390 clips}.
+
+Now let me explain the metrics. \textbf{AUC-ROC} measures how well the model separates positive from negative samples across \textit{all possible thresholds}. An AUC of 0.5 is random guessing, and 1.0 is perfect. \textbf{We achieved 0.847}.
+
+\textbf{F1 Score} balances precision and recall for the TTM-positive class. This is critical because of the class imbalance I mentioned. \textbf{Our F1 is 0.668}.
+
+\textbf{Precision} measures: of all the clips the model labelled as TTM-positive, how many were actually correct? \textbf{Ours is 0.857} --- meaning very few false alarms.
+
+\textbf{Recall} measures: of all the true TTM events, how many did the model catch? \textbf{Ours is 0.547}, which we acknowledge is an area for improvement.''
+}
+
+% ── SLIDE 5 ──────────────────────────────────────────────────────────────────
+\slideheading{5}{Complete Pipeline Architecture}{Mihir Chandra}
+
+\timing{$\sim$90 seconds}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Walk through the diagram from left to right
+  \item Explain the two input streams (video top row, audio bottom row)
+  \item Explain how they merge at cross-modal attention
+  \item Show the temporal modeling path: BiLSTM $\to$ Bahdanau $\to$ FC $\to$ Output
+  \item Mention the final numbers at the bottom
+\end{itemize}
+}
+
+\script{%
+``Let me now give you the \textbf{bird's-eye view} of our full pipeline, before my teammates explain each component in depth.
+
+Looking at the architecture diagram, you can see \textbf{two parallel streams}.
+
+The \textbf{top stream} handles video. We take the input video clip, detect the face using RetinaFace, then pass the face crops through \textbf{I3D-R50} --- a 3D convolutional neural network pretrained on the Kinetics-400 action recognition dataset. This gives us a 512-dimensional \textbf{video embedding} for each time step.
+
+The \textbf{bottom stream} handles audio. We take the raw 16 kHz audio, convert it into a \textbf{Mel spectrogram} image, and then pass it through \textbf{ResNet-18} --- a standard image CNN pretrained on ImageNet. This gives us a matching 512-dimensional \textbf{audio embedding} per time step.
+
+Now these two streams meet at the \textbf{Cross-Modal Attention} block. Here, the video features attend to the audio features and vice versa, allowing the model to learn which parts of the audio are most relevant to the visual content and vice versa. The output is a single fused 512-dimensional feature.
+
+These fused features, one per video clip, are stacked into a sequence of 16 time steps and fed into a \textbf{2-layer Bidirectional LSTM} for temporal modeling.
+
+The BiLSTM output then goes through \textbf{Bahdanau Attention}, which assigns importance weights to each time step, so the classifier focuses on the most informative moments.
+
+Finally, a \textbf{fully connected layer with sigmoid activation} produces the TTM probability, which is thresholded at 0.139 to give the binary prediction.
+
+\textbf{The full model has only 3.68 million parameters} and achieves AUC-ROC of 0.847.''
+}
+
+\tip{Use a laser pointer to trace the arrows from left to right as you describe each block. Let the audience follow the data flow visually.}
+
+% ── SLIDE 6 ──────────────────────────────────────────────────────────────────
+\slideheading{6}{Video Processing Pipeline}{Mihir Chandra \& Harshit}
+
+\timing{$\sim$90 seconds --- Mihir: first 45s (Why 3D CNN), Harshit: second 45s (Slow/Fast pathways + Training Observation)}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Explain why 2D CNNs are insufficient --- they miss temporal motion
+  \item Explain the SlowFast dual-pathway design conceptually
+  \item Mention I3D is used in the fusion model; SlowFast was a standalone baseline
+  \item Mention the overfitting observation and the fix
+\end{itemize}
+}
+
+\script{%
+\textbf{Mihir:} ``To process the video stream, we need to capture not just what a face \textit{looks like}, but how it \textit{moves} over time. Standard 2D CNNs process each video frame independently --- they cannot see motion. Instead, we use \textbf{3D Convolutional Neural Networks} that apply convolutions across both space and time simultaneously, learning features like lip movement trajectories and head motion patterns.
+
+For our baseline experiments, we tested \textbf{SlowFast-R50}, a state-of-the-art architecture with a dual-pathway design. The \textbf{Slow pathway} processes frames at a low frame rate of 4 frames per second with high spatial resolution, capturing detailed facial appearance. The \textbf{Fast pathway} processes at 32 frames per second with a lightweight architecture, capturing rapid motion like lip movements and jaw dynamics. These two pathways share information through lateral connections, giving the model both semantic context and temporal sensitivity.
+
+Both are pretrained on \textbf{Kinetics-400}, a large action recognition dataset.''
+
+\textbf{Harshit:} ``In our final fusion model, we use \textbf{I3D-R50} as the video encoder, which also learns spatiotemporal features but has a simpler architecture that integrates better with our fusion pipeline.
+
+An important observation during our experiments: the video-only model \textbf{overfit severely}. Training accuracy quickly approached 100\% while validation performance plateaued. To address this, we froze the early layers of the backbone and only fine-tuned the final blocks, combined with dropout and weight decay. This significantly improved generalization.
+
+The video encoder produces a \textbf{512-dimensional embedding} per clip, which then flows into the cross-modal attention block.''
+}
+
+% ── SLIDE 7 ──────────────────────────────────────────────────────────────────
+\slideheading{7}{Audio Processing Pipeline}{Naman \& Sowmika Rao}
+
+\timing{$\sim$90 seconds --- Naman: Steps 1--2 (extraction + Mel spectrogram), Sowmika: Steps 3--4 (ResNet-18 + embedding + observation)}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Explain why raw audio is not fed directly to the CNN
+  \item Explain what a Mel spectrogram is and why the Mel scale is used
+  \item Explain how ResNet-18 treats the spectrogram as an image
+  \item State the audio-only accuracy as a baseline reference
+\end{itemize}
+}
+
+\script{%
+\textbf{Naman:} ``Let me now walk you through the audio processing side.
+
+\textbf{Step 1 is audio extraction.} We extract the raw 16 kHz mono audio from each video clip and segment it into 1-second windows that are time-aligned with the video clips.
+
+\textbf{Step 2 is converting audio to a Mel Spectrogram.} A raw audio waveform is a 1D signal of amplitude versus time. However, convolutional neural networks work best with 2D image-like inputs. We apply a \textbf{Short-Time Fourier Transform} to convert the time-domain signal into a 2D representation of \textit{frequency versus time}. We then map the frequencies onto the \textbf{Mel scale}, which is a perceptual scale that mimics how the human auditory system processes sound. Lower frequencies are spread out more; higher frequencies are compressed. This makes it easier for the CNN to learn speech-relevant patterns. The final spectrogram has dimensions \textbf{1 $\times$ 64 $\times$ 50} --- one channel, 64 Mel frequency bins, and 50 time frames.''
+
+\textbf{Sowmika:} ``\textbf{Step 3 is the ResNet-18 audio CNN.} We treat the Mel spectrogram as a single-channel image and pass it through \textbf{ResNet-18}, a well-known image classification CNN. We use a version pretrained on ImageNet for initialization. The CNN learns to recognize spectral patterns associated with active speech.
+
+On its own, this audio CNN achieved a \textbf{validation accuracy of 66.78\%} --- a solid baseline, but clearly not enough.
+
+\textbf{Step 4 is the audio embedding.} Global average pooling after the last ResNet layer produces a \textbf{512-dimensional embedding} that matches the video embedding dimension, which is essential for the cross-modal attention fusion that follows.
+
+One observation we made: the audio CNN overfit quickly on its own. Feeding these features into the BiLSTM with temporal context substantially improved their utilization.''
+}
+
+% ── SLIDE 8 ──────────────────────────────────────────────────────────────────
+\slideheading{8}{Temporal Modeling with BiLSTM}{Vikky Kumar \& Vershita Yadav}
+
+\timing{$\sim$75 seconds}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Explain why single-clip decisions are insufficient
+  \item Explain what a BiLSTM is in plain language
+  \item Explain the sequence setup: $T=16$ clips, stride settings
+  \item Mention dropout = 0.5 as a regularization choice
+\end{itemize}
+}
+
+\script{%
+\textbf{Vikky:} ``After the cross-modal attention block produces a fused feature vector for each clip, we face a new challenge: should we make a decision based on just \textit{one clip} at a time?
+
+Speech is a continuous, evolving behavior. Whether someone is talking to you is not decided in a single instant --- it unfolds over several seconds. So we \textbf{stack 16 consecutive clips into a sequence} and model this sequence with a \textbf{Bidirectional LSTM}.
+
+An LSTM --- Long Short-Term Memory --- is a type of recurrent neural network designed to handle sequential data. It maintains a memory of past events and uses it to inform future predictions. The \textbf{bidirectional} variant processes the sequence in both the \textit{forward direction} --- using past context --- and the \textit{backward direction} --- using future context. This is useful because sometimes a person's body language or a trailing word at the end of a clip is the most informative cue.
+
+\textbf{Vershita:} ``Our BiLSTM has \textbf{2 stacked layers with a hidden size of 256 per direction}, giving 512 total dimensions per time step. The input is the 512-dimensional fused feature from cross-modal attention.
+
+During training, we use a stride of 4 clips between sequences to generate more training examples. During inference, we use a stride of 8 for efficiency.
+
+We apply \textbf{dropout of 0.5} between layers to prevent overfitting, which was a significant challenge in our experiments.
+
+The BiLSTM outputs 16 hidden states --- one per clip --- which are then fed into the Bahdanau attention mechanism.''
+}
+
+% ── SLIDE 9 ──────────────────────────────────────────────────────────────────
+\slideheading{9}{Bahdanau Attention Mechanism}{Vershita Yadav}
+
+\timing{$\sim$60 seconds}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Explain the problem with mean pooling
+  \item Explain attention weights intuitively (which clips matter most?)
+  \item Walk through the three equations in simple language
+  \item Point to the bar chart: high attention in the middle clips where lips + audio are active
+\end{itemize}
+}
+
+\script{%
+``After the BiLSTM gives us 16 hidden states --- one per time step --- we need to \textbf{combine them into a single vector} before feeding it into the final classifier.
+
+The simplest approach would be \textbf{mean pooling} --- just average all 16 hidden states equally. But this is a poor idea. Not all clips are equally informative. In a 16-clip sequence, some clips might have the person looking away, and some clips might have perfectly synchronized lip movement and audio. We should \textbf{focus on the informative clips}.
+
+This is exactly what \textbf{Bahdanau Attention} does. It learns to assign a \textbf{weight $\alpha_t$} to each time step $t$, where all weights sum to 1. The final context vector $c$ is then the \textbf{weighted sum} of all hidden states.
+
+The equations are simple. First, we compute an energy score $e_t$ for each hidden state $h_t$ using a small trainable network: $e_t = v^\top \tanh(W h_t + b)$. Then we normalize with softmax to get attention weights $\alpha_t$. Finally, the context vector is $c = \sum \alpha_t h_t$.
+
+Look at the bar chart on this slide. The model learns to assign \textbf{high attention} to the middle clips --- specifically clips 7, 8, and 9 --- where audio and visual signals are most synchronized. Clips at the beginning and end of the sequence receive low attention.
+
+This not only improves prediction accuracy, it also gives us \textbf{interpretability} --- we can inspect which clips drove the decision.''
+}
+
+% ── SLIDE 10 ─────────────────────────────────────────────────────────────────
+\slideheading{10}{Training Strategy}{Aman Sharma \& Vershita Yadav}
+
+\timing{$\sim$60 seconds}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Explain the loss function choice: weighted BCE for class imbalance
+  \item Explain optimizer and LR scheduler
+  \item Describe the weighted sampler
+  \item Point to the training curves: best epoch 9, plateau vs decreasing loss
+  \item Explain the decision to use threshold = 0.139 (not default 0.5)
+\end{itemize}
+}
+
+\script{%
+\textbf{Aman:} ``Let me now describe how we trained the model.
+
+We use \textbf{Weighted Binary Cross-Entropy loss}. Because TTM-positive clips are rare, a standard BCE loss would be dominated by the negative class. We assign a higher loss weight to positive samples to compensate.
+
+Additionally, we use a \textbf{weighted random sampler} during training, which over-samples TTM-positive clips so the model sees both classes roughly equally in each batch. The batch size is \textbf{256 sequences}.
+
+Our optimizer is \textbf{AdamW with a learning rate of 3$\times$10$^{-4}$}, and we use \textbf{ReduceLROnPlateau} to automatically lower the learning rate when validation performance stops improving. Dropout is set to 0.5 throughout.
+
+\textbf{Vershita:} ``Looking at the training curves on the right, you can see that training loss consistently decreases over all 18 epochs. However, \textbf{validation AP peaks at epoch 9} and then oscillates without significant improvement. This is a classic overfitting pattern, so we apply \textbf{early stopping} and use the epoch-9 checkpoint for evaluation.
+
+One important decision: instead of using the standard threshold of 0.5 to convert probabilities to binary predictions, we tuned the threshold to \textbf{0.139}. This lowers the bar for predicting TTM=1, which helps \textit{recall} without sacrificing too much precision. Our final precision-recall balance is: Precision 0.857, Recall 0.547.''
+}
+
+% ── SLIDE 11 ─────────────────────────────────────────────────────────────────
+\slideheading{11}{Experimental Results}{Kanika Choudhary}
+
+\timing{$\sim$75 seconds}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Read out the four headline numbers: AUC, F1, Precision, Recall
+  \item Explain the confusion matrix (TP, TN, FP, FN) in plain language
+  \item Show the component comparison: fusion $>$ audio-only $>$ video-only
+  \item Explain why validation numbers are inflated (imbalanced split)
+\end{itemize}
+}
+
+\script{%
+``Let us now look at the actual results on the \textbf{balanced test set of 6,390 clips}.
+
+Our headline numbers are: \textbf{AUC-ROC = 0.847}, \textbf{F1 = 0.668}, \textbf{Precision = 0.857}, and \textbf{Recall = 0.547}.
+
+The \textbf{confusion matrix} tells us the breakdown: We correctly predicted 5,807 non-TTM clips as negative (true negatives), and 3,497 TTM clips as positive (true positives). We had 583 false alarms --- clips we predicted as TTM but weren't --- and 2,893 missed detections --- true TTM events we failed to catch. The high precision means our positive predictions are very reliable. The moderate recall means we are still missing some true events, which is something future work can address.
+
+Now look at the \textbf{component comparison table}. The SlowFast video-only model alone achieves only \textbf{61.9\% accuracy}. The audio CNN alone reaches \textbf{66.8\% accuracy}. The \textbf{full fusion model improves to 72.8\%} --- confirming that both modalities contribute meaningfully and multimodal fusion is the right approach.
+
+I should note: the validation set shows a very high AUC of 0.995 and 98.2\% accuracy. This is \textbf{misleading} and happens because the validation split is highly imbalanced --- it has far more negative samples than positive ones. That is why the balanced test set is the correct benchmark.''
+}
+
+% ── SLIDE 12 ─────────────────────────────────────────────────────────────────
+\slideheading{12}{Comparison with Prior Work}{Aman Sharma}
+
+\timing{$\sim$60 seconds}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Acknowledge that prior works (TalkNet, ASDNet, Light-ASD) use AVA-ASD dataset --- different from Ego4D TTM
+  \item Highlight our unique contributions: egocentric, cross-modal + Bahdanau two-stage attention
+  \item Emphasize parameter efficiency: 3.68M vs 15M--50M
+  \item Mention imbalance handling as a differentiator
+\end{itemize}
+}
+
+\script{%
+``It is important to place our results in the context of prior work. The table compares our approach with four published methods.
+
+\textbf{TalkNet, ASDNet, MAAS,} and \textbf{Light-ASD} are all evaluated on the \textbf{AVA Active Speaker Detection} benchmark, which uses third-person video from movies. They report mean Average Precision, which is a different metric from our AUC-ROC. Direct numerical comparison is therefore not perfectly fair --- but it tells us where we stand architecturally.
+
+These methods achieve mAP between 88\% and 94\%, with parameter counts ranging from 1 million to almost 50 million. \textbf{We use 3.68 million parameters} --- larger than Light-ASD but 4 to 13 times smaller than TalkNet, ASDNet, and MAAS.
+
+The \textbf{Ego4D baseline} from Grauman et al., which is the most directly comparable system on our dataset, achieves around 60\% accuracy with about 11 million parameters. \textbf{We improve to 72.8\% accuracy with only 3.68 million parameters}.
+
+What makes our model unique? \textbf{First}, we are the only approach using \textbf{egocentric video} with a \textbf{two-stage attention design} --- cross-modal attention for modality fusion and Bahdanau attention for temporal focus. \textbf{Second}, we specifically address \textbf{class imbalance} through weighted BCE, weighted sampling, and threshold tuning, which prior ASD methods do not tackle.''
+}
+
+% ── SLIDE 13 ─────────────────────────────────────────────────────────────────
+\slideheading{13}{Risks \& Mitigation Strategies}{Harshit \& Sowmika Rao}
+
+\timing{$\sim$45 seconds --- Brief, move through quickly}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Mention that these are real problems we encountered, not theoretical
+  \item Cover: OOM, overfitting, class imbalance, gradient vanishing, A-V sync
+  \item Describe each fix in one sentence
+\end{itemize}
+}
+
+\script{%
+\textbf{Harshit:} ``During development we encountered several real engineering challenges.
+
+\textbf{GPU out-of-memory errors}: combining a 3D CNN with a BiLSTM is computationally heavy. We resolved this using \textbf{FP16 mixed-precision training}, gradient accumulation, and reducing input resolution.
+
+\textbf{Video CNN overfitting}: the model memorized training data quickly. We applied \textbf{dropout, weight decay, frozen early backbone layers,} and early stopping at epoch 9.
+
+\textbf{Gradient vanishing}: in long LSTM sequences, gradients weaken as they flow back in time. We applied \textbf{gradient clipping} and the Bahdanau attention mechanism provides shortcut connections that help gradients flow.''
+
+\textbf{Sowmika:} ``\textbf{Class imbalance}: the TTM-positive class is rare. We used \textbf{weighted sampling and weighted BCE loss} and monitored F1 and AUC instead of raw accuracy.
+
+\textbf{Audio-visual synchronization}: there were small timing offsets between audio and video in Ego4D recordings. We performed synchronization checks during preprocessing and applied \textbf{temporal augmentation} during training to make the model robust to small shifts.''
+}
+
+% ── SLIDE 14 ─────────────────────────────────────────────────────────────────
+\slideheading{14}{Team Role Distribution}{Kanika Choudhary}
+
+\timing{$\sim$30 seconds --- Keep brief, this is a courtesy slide}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Briefly acknowledge each sub-team's contribution
+  \item Show how the pipeline is modular and each team owned one block
+\end{itemize}
+}
+
+\script{%
+``Our team of eight worked in sub-groups, with each pair owning a specific module of the pipeline.
+
+\textbf{Mihir and Harshit} built the 3D video CNN pipeline using I3D and SlowFast.
+\textbf{Aman and Kanika} handled video preprocessing and face detection.
+\textbf{Naman and Sowmika} implemented the audio pipeline with the Mel spectrogram and ResNet-18.
+\textbf{Vikky and Vershita} designed and implemented the BiLSTM and both attention mechanisms.
+\textbf{Vershita and Vikky} also led the end-to-end training loop and optimization strategy.
+
+The modular design allowed parallel development and easy ablation testing of individual components.''
+}
+
+% ── SLIDE 15 ─────────────────────────────────────────────────────────────────
+\slideheading{15}{Conclusion \& Future Work}{Vikky Kumar}
+
+\timing{$\sim$60 seconds}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Summarize the four main conclusions (multimodal fusion, cross-modal attention, BiLSTM, precision vs recall)
+  \item Present four concrete future directions
+  \item End with a forward-looking statement
+\end{itemize}
+}
+
+\script{%
+``Let me summarize what we have shown.
+
+\textbf{First}: multimodal fusion works. Video-only and audio-only systems both underperformed significantly. Combining them gave us a clear jump in AUC and accuracy.
+
+\textbf{Second}: cross-modal attention is a powerful way to fuse modalities. By letting video features attend to audio features before temporal modeling, the model learns meaningful inter-modal correlations.
+
+\textbf{Third}: temporal context via BiLSTM is essential. Single-clip decisions are noisy. Modeling a 16-clip sequence allows the model to accumulate evidence over time.
+
+\textbf{Fourth}: precision vs recall is a fundamental trade-off. Our model is precise --- its positive predictions are mostly correct --- but it misses some true events. Threshold tuning and future training improvements can shift this balance.
+
+For \textbf{future work}, we identify four directions.
+\textbf{Video Transformers} like Video Swin or TimeSformer could replace the BiLSTM for more powerful temporal modeling.
+\textbf{Adaptive thresholding} and probability calibration can improve recall.
+\textbf{Real-time deployment} on edge devices for AR/VR requires further model compression.
+And \textbf{multi-speaker attribution} would extend the framework to predict TTM probabilities for multiple visible faces simultaneously --- a natural next step for crowded social scenes.
+
+We believe this work demonstrates a strong, parameter-efficient approach to egocentric active speaker detection.''
+}
+
+% ── SLIDE 16 ─────────────────────────────────────────────────────────────────
+\slideheading{16}{Thank You / Q\&A}{All Members}
+
+\timing{$\sim$30 seconds then open Q\&A}
+
+\keypoints{%
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Brief closing statement
+  \item All members should be ready for questions
+  \item Suggested questions and answers below
+\end{itemize}
+}
+
+\script{%
+``Thank you for your attention. We are happy to take questions.
+
+To summarize: our Group 42 TTM system uses \textbf{I3D video features + ResNet-18 audio features}, fused through \textbf{cross-modal attention}, modeled temporally by a \textbf{2-layer BiLSTM}, focused by \textbf{Bahdanau attention}, and classified with a sigmoid output. We achieve \textbf{AUC-ROC of 0.847} and \textbf{F1 of 0.668} on the balanced Ego4D test set with only \textbf{3.68 million parameters}.''
+}
+
+\vspace{0.4cm}
+\begin{tcolorbox}[
+  colback=AccBlue!8, colframe=AccBlue,
+  leftrule=5pt, arc=3pt,
+  title={\bfseries Likely Q\&A Questions --- Prepare These Answers}
+]
+\begin{enumerate}[leftmargin=*, itemsep=6pt]
+  \item \textbf{Why use a threshold of 0.139 instead of 0.5?}\\
+  {\small The default threshold of 0.5 is optimal only when the class distribution is balanced. Because the TTM-positive class is rare, the model's sigmoid outputs are systematically low. Tuning the threshold on the validation set to 0.139 maximizes the F1 score by accepting lower-confidence positive predictions.}
+
+  \item \textbf{Why not use a transformer instead of a BiLSTM?}\\
+  {\small BiLSTMs are more memory-efficient and train faster with limited GPU resources. They are also a proven baseline for temporal sequence modeling. Transformers are a natural next step but require significantly more compute.}
+
+  \item \textbf{Why is the validation AUC 0.995 but test AUC is 0.847?}\\
+  {\small The validation split is heavily imbalanced (many more negatives than positives). A model that is good at rejecting negatives scores very high on imbalanced AUC. The balanced test set gives a fairer picture.}
+
+  \item \textbf{What is cross-modal attention and why is it better than simple concatenation?}\\
+  {\small Concatenation blindly merges two feature vectors. Cross-modal attention lets each modality \textit{query} the other: audio features help determine which video regions to focus on, and video features help determine which audio frequencies are relevant. This selective fusion is more expressive.}
+
+  \item \textbf{What is the biggest limitation of your system?}\\
+  {\small Recall of 0.547 means we miss about half of true TTM events. This is partly due to class imbalance in training, and partly because some TTM events are genuinely ambiguous even for humans. Better temporal context windows and stronger data augmentation could help.}
+
+  \item \textbf{How does your model compare to the challenge leaderboard?}\\
+  {\small We are not directly on the official leaderboard but our test set AUC of 0.847 substantially improves over the Ego4D baseline of approximately 60\% accuracy while using 3$\times$ fewer parameters.}
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+\begin{center}
+{\large\bfseries\color{NavyBlue} --- END OF PRESENTER'S SCRIPT ---}\\[0.2cm]
+{\color{MidText}\small Group 42 $\cdot$ CS671 $\cdot$ IIT $\cdot$ 2026}
+\end{center}
+
+\end{document}
