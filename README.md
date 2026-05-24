@@ -122,6 +122,29 @@ graph LR
 	style LSTM fill:#9f9,stroke:#333,stroke-width:1px
 	style CLS fill:#f99,stroke:#333,stroke-width:1px
 ```
+```
+mermaid
+graph LR
+
+subgraph Inputs
+    V[Video frames] --> VE["Video Embedding<br/>I3D-R50"]
+    A[Audio waveform] --> AE["Audio Embedding<br/>ResNet-18"]
+end
+
+VE --> P["Projection to shared latent space"]
+AE --> P
+
+P --> CMA["Bidirectional Cross-Modal Attention"]
+
+CMA --> CAT["Concatenate attended streams"]
+
+CAT --> LSTM["2-layer BiLSTM temporal modeling"]
+
+LSTM --> ATT["Bahdanau attention sequence pooling"]
+
+ATT --> CLS["Classifier: TTM / non-TTM"]
+
+```
 
 ![Complete Pipeline Architecture](fusion/results/architecture.png)
 
@@ -223,7 +246,8 @@ This repository is focused on experimentation and reporting for the TTM task. It
 This project was completed under the guidance of Dr. Aditya Nigam Sir as part of a course at IIT Mandi.
 
 ## Group Members
- 
+
+- Naman Khatak
 - Kanika Choudhary
 - Aman Sharma
 - Vikky Kumar
@@ -231,5 +255,4 @@ This project was completed under the guidance of Dr. Aditya Nigam Sir as part of
 - Mihir Chandra
 - Harshit
 - Sowmika Rao
-- Naman Khatak
 
