@@ -98,53 +98,40 @@ The repository follows a clear pipeline:
 
 The final fusion pipeline is implemented around cached `.npy` embeddings so training is much faster than raw-frame/raw-waveform training.
 
-## Model Details
+## Architecture
 
-### Audio Baseline
+Below is a high-level architecture diagram showing the main data flow and model components used in the fusion pipeline. This is rendered as a Mermaid diagram which GitHub and many Markdown viewers support.
 
-The audio branch uses a CNN over audio representations generated from the extracted signals. The repository includes both the standard and balanced training paths, with balanced-data artifacts stored under `audio_cnn/checkpoints_balanced/` and `audio_cnn/results_balanced/`.
+```mermaid
+graph LR
+	subgraph Inputs
+		V[Video frames] --> VE[Video Embedding\n(I3D-R50)]
+		A[Audio waveform] --> AE[Audio Embedding\n(ResNet-18)]
+	end
+	VE --> P[Projection to shared latent space]
+	AE --> P
+	P --> CMA[Bidirectional Cross-Modal Attention]
+	CMA --> CAT[Concatenate attended streams]
+	CAT --> LSTM[2-layer BiLSTM (temporal modeling)]
+	LSTM --> ATT[Bahdanau attention (sequence pooling)]
+	ATT --> CLS[Classifier (TTM / non-TTM)]
 
-### Video Baseline
+	style V fill:#f9f,stroke:#333,stroke-width:1px
+	style A fill:#9ff,stroke:#333,stroke-width:1px
+	style P fill:#ff9,stroke:#333,stroke-width:1px
+	style LSTM fill:#9f9,stroke:#333,stroke-width:1px
+	style CLS fill:#f99,stroke:#333,stroke-width:1px
+```
 
-The video branch uses a video CNN baseline and a separate SlowFast experiment. The SlowFast branch is kept as a separate training path, with its own checkpoints and metrics in `video_cnn/checkpoints_slowfast/` and `video_cnn/results_slowfast/`.
+![Complete Pipeline Architecture](fusion/results/architecture.png)
 
-### Fusion Model
-
-The final multimodal model in `fusion/fusion_model.py` is structured as follows:
-
-- Projection of video and audio embeddings into a shared latent space.
-- Bidirectional cross-modal attention, so video queries attend to audio and audio queries attend to video.
-- Concatenation of the attended streams.
-- A 2-layer BiLSTM for temporal context.
-- Bahdanau attention over the sequence of hidden states.
-- A classifier head that outputs TTM logits.
-
-The implementation also includes a learned fallback token for missing audio, which helps avoid degenerate attention on zero-filled audio windows.
-
-## Training Strategy
-
-The fusion training code is written to handle class imbalance and overfitting explicitly.
-
-- `WeightedRandomSampler` balances window-level batches.
-- `AdamW` is used as the optimizer.
-- `ReduceLROnPlateau` lowers the learning rate when validation AP stalls.
-- Label smoothing is used in the classification loss.
-- Early stopping is driven by validation AP.
-- Threshold search is performed after training to improve the precision-recall trade-off.
-- Augmentations include modality dropout, temporal masking, Gaussian noise, and MixUp in the fusion training loop.
-
-## End-to-End Workflow
-
-The repository follows a clear pipeline:
-
-1. Build the clip subset and split it by track or person.
-2. Extract audio from the source videos.
-3. Precompute video and audio embeddings.
-4. Train unimodal audio and video baselines.
-5. Train the multimodal fusion model on sliding windows of embeddings.
-6. Evaluate the final model, tune the threshold, and export the metrics and reports.
-
-The final fusion pipeline is implemented around cached `.npy` embeddings so training is much faster than raw-frame/raw-waveform training.
+Key components:
+- **Video Embedding:** I3D-R50 backbone producing per-window features.
+- **Audio Embedding:** ResNet-18 audio encoder producing aligned audio features.
+- **Projection:** Linear layers that align audio/video into a shared latent space.
+- **Bidirectional Cross-Modal Attention:** Video attends to audio and audio attends to video.
+- **Temporal Model:** 2-layer BiLSTM for sequence-level context and Bahdanau attention for pooling.
+- **Classifier:** Final MLP head producing TTM logits and probabilities.
 
 ## Model Details
 
@@ -236,8 +223,7 @@ This repository is focused on experimentation and reporting for the TTM task. It
 This project was completed under the guidance of Dr. Aditya Nigam Sir as part of a course at IIT Mandi.
 
 ## Group Members
-
-- Naman Khatak
+ 
 - Kanika Choudhary
 - Aman Sharma
 - Vikky Kumar
@@ -245,4 +231,5 @@ This project was completed under the guidance of Dr. Aditya Nigam Sir as part of
 - Mihir Chandra
 - Harshit
 - Sowmika Rao
+- Naman Khatak
 
