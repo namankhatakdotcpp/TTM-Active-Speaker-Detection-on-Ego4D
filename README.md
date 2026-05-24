@@ -203,6 +203,14 @@ The `fusion/` directory also contains the project delivery assets:
 - `generate_*ppt.py` scripts for presentation generation.
 - `results/cs671_midproject_report.html` and `results/cs671_endsemester_report.html` for report delivery.
 
+## Project Video
+
+Watch a short walkthrough of the project on YouTube:
+
+[![Project Video](https://img.youtube.com/vi/K4TR8V3BZms/hqdefault.jpg)](https://youtu.be/K4TR8V3BZms?si=bezo0Ns7uG7-okXL)
+
+Or open the link directly: https://youtu.be/K4TR8V3BZms?si=bezo0Ns7uG7-okXL
+
 ## How To Reproduce
 
 The exact runtime environment is not fully captured in this README, but the code structure indicates the intended workflow:
