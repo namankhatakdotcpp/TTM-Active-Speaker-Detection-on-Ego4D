@@ -237,6 +237,7 @@ This project was completed under the guidance of Dr. Aditya Nigam Sir as part of
 
 ## Group Members
 
+- Naman Khatak
 - Kanika Choudhary
 - Aman Sharma
 - Vikky Kumar
@@ -244,4 +245,4 @@ This project was completed under the guidance of Dr. Aditya Nigam Sir as part of
 - Mihir Chandra
 - Harshit
 - Sowmika Rao
-- Naman
+
