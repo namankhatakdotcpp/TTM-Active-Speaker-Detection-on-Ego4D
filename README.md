@@ -133,6 +133,54 @@ The fusion training code is written to handle class imbalance and overfitting ex
 - Threshold search is performed after training to improve the precision-recall trade-off.
 - Augmentations include modality dropout, temporal masking, Gaussian noise, and MixUp in the fusion training loop.
 
+## End-to-End Workflow
+
+The repository follows a clear pipeline:
+
+1. Build the clip subset and split it by track or person.
+2. Extract audio from the source videos.
+3. Precompute video and audio embeddings.
+4. Train unimodal audio and video baselines.
+5. Train the multimodal fusion model on sliding windows of embeddings.
+6. Evaluate the final model, tune the threshold, and export the metrics and reports.
+
+The final fusion pipeline is implemented around cached `.npy` embeddings so training is much faster than raw-frame/raw-waveform training.
+
+## Model Details
+
+### Audio Baseline
+
+The audio branch uses a CNN over audio representations generated from the extracted signals. The repository includes both the standard and balanced training paths, with balanced-data artifacts stored under `audio_cnn/checkpoints_balanced/` and `audio_cnn/results_balanced/`.
+
+### Video Baseline
+
+The video branch uses a video CNN baseline and a separate SlowFast experiment. The SlowFast branch is kept as a separate training path, with its own checkpoints and metrics in `video_cnn/checkpoints_slowfast/` and `video_cnn/results_slowfast/`.
+
+### Fusion Model
+
+The final multimodal model in `fusion/fusion_model.py` is structured as follows:
+
+- Projection of video and audio embeddings into a shared latent space.
+- Bidirectional cross-modal attention, so video queries attend to audio and audio queries attend to video.
+- Concatenation of the attended streams.
+- A 2-layer BiLSTM for temporal context.
+- Bahdanau attention over the sequence of hidden states.
+- A classifier head that outputs TTM logits.
+
+The implementation also includes a learned fallback token for missing audio, which helps avoid degenerate attention on zero-filled audio windows.
+
+## Training Strategy
+
+The fusion training code is written to handle class imbalance and overfitting explicitly.
+
+- `WeightedRandomSampler` balances window-level batches.
+- `AdamW` is used as the optimizer.
+- `ReduceLROnPlateau` lowers the learning rate when validation AP stalls.
+- Label smoothing is used in the classification loss.
+- Early stopping is driven by validation AP.
+- Threshold search is performed after training to improve the precision-recall trade-off.
+- Augmentations include modality dropout, temporal masking, Gaussian noise, and MixUp in the fusion training loop.
+
 ## Data Artifacts
 
 The repository already contains a substantial amount of generated data and experiment output.
